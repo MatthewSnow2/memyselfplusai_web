@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore AI automation, agent design, consulting, and training services from Me, Myself Plus AI." />
+  <title>Services | Me, Myself Plus AI</title>
+  <link rel="icon" type="image/png" href="/public/images/FullLogo_Transparent_NoBuffer.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0b0b13; margin: 0; }
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      display: block;
+      background: #0b0b13;
+    }
+    .main-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 48px;
+    }
+    .logo {
+      margin-top: 36px;
+      margin-bottom: 12px;
+      height: 120px;
+      max-width: 340px;
+      width: auto;
+      display: block;
+    }
+    .headline {
+      color: #fff;
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 18vh;
+      margin-bottom: 28px;
+      width: 90vw;
+      max-width: 1100px;
+      letter-spacing: -0.01em;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin: 0 auto;
+      max-width: 1100px;
+      padding: 0 8vw 36px 8vw;
+      justify-items: start;
+      width: 100%;
+    }
+    .service-card {
+      background: rgba(30,41,59,0.90);
+      border-radius: 18px;
+      box-shadow: 0 2px 24px 0 rgba(20,184,166,0.07);
+      padding: 32px 20px;
+      color: #e6f7f7;
+      font-size: 1.1rem;
+      text-align: left;
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: 1.5px solid #14b8a6;
+      width: 100%;
+      max-width: 600px;
+    }
+    .service-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
+      border-color: #06b6d4;
+    }
+    .service-title {
+      color: #14b8a6;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .logo { height: 80px; max-width: 220px; }
+      .headline { font-size: 1.1rem; margin-top: 12vh; }
+      .services-grid { gap: 18px; padding: 0 4vw 18px 4vw; }
+      .service-card { font-size: 1rem; padding: 18px 8px; }
+    }
+    .main-nav { font-family: 'Inter',sans-serif; font-size:1.08rem; }
+    .nav-link { color:#7dd3fc; text-decoration:none; font-weight:600; padding:3px 8px; border-radius:6px; transition:background 0.18s, color 0.18s; }
+    .nav-link:hover, .nav-link:focus { background:#14b8a6; color:#fff; outline:none; }
+    .nav-link[aria-current="page"] { background:#14b8a6; color:#fff; }
+  </style>
+</head>
+<body style="margin:0; padding:0; overflow-x:hidden;">
+  <canvas id="bg-canvas"></canvas>
+  <nav class="main-nav" style="position:relative; z-index:2; width:100%; display:flex; justify-content:center; gap:2.5rem; margin-top:18px; margin-bottom:8px;">
+    <a href="/index.html" class="nav-link">Home</a>
+    <a href="/about.html" class="nav-link">About</a>
+    <a href="/services.html" class="nav-link" aria-current="page">Services</a>
+    <a href="/projects.html" class="nav-link">Projects</a>
+    <a href="/blog/index.html" class="nav-link">Blog</a>
+    <a href="/contact.html" class="nav-link">Contact</a>
+  </nav>
+  <div class="main-content">
+    <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
+    <div class="headline">AI Services & Subscriptions</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">Custom AI Automation</div>
+        <div>Automate repetitive tasks and workflows tailored to your unique business needs for maximum efficiency.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Agent Design</div>
+        <div>Design and deploy intelligent agents that integrate seamlessly with your digital ecosystem.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Consulting & Training</div>
+        <div>Expert consulting and hands-on training to empower your team and future-proof your business.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">AI Subscriptions</div>
+        <div>Ongoing access to managed AI solutions with regular updates and continuous support for your business needs.</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Animated glowing dots background (canvas)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let dots = [];
+    const DOTS = 40;
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    function randomDot() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 6 + Math.random() * 10,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
+      };
+    }
+    function distance(a, b) {
+      return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+    }
+    function updateDots() {
+      for (let d of dots) {
+        d.x += d.dx;
+        d.y += d.dy;
+        if (d.x < 0 || d.x > width) d.dx *= -1;
+        if (d.y < 0 || d.y > height) d.dy *= -1;
+      }
+      // Occasionally merge dots
+      for (let i = 0; i < dots.length; ++i) {
+        for (let j = i+1; j < dots.length; ++j) {
+          let a = dots[i], b = dots[j];
+          if (distance(a, b) < (a.r + b.r) * 0.8) {
+            // Merge: average position, increase radius
+            a.x = (a.x + b.x) / 2;
+            a.y = (a.y + b.y) / 2;
+            a.r = Math.min(24, a.r + b.r * 0.18);
+            b.x = Math.random() * width;
+            b.y = Math.random() * height;
+            b.r = 6 + Math.random() * 10;
+          }
+        }
+      }
+    }
+    function drawDots() {
+      ctx.clearRect(0, 0, width, height);
+      for (let d of dots) {
+        let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
+        grad.addColorStop(0, d.color);
+        grad.addColorStop(1, 'rgba(20,184,166,0)');
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+        ctx.fillStyle = grad;
+        ctx.shadowColor = '#14b8a6';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+      }
+    }
+    function animate() {
+      updateDots();
+      drawDots();
+      requestAnimationFrame(animate);
+    }
+    // Init dots
+    dots = Array.from({length: DOTS}, randomDot);
+    animate();
+  </script>
+</body>
+</html>
