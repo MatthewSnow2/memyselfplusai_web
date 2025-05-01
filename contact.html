@@ -113,7 +113,7 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <form name="contact" method="POST" data-netlify="true" id="contact-form">
+      <form name="contact" method="POST" data-netlify="true" netlify>
         <input type="hidden" name="form-name" value="contact" />
         <div class="contact-form">
           <label for="name">Name</label>
@@ -205,26 +205,11 @@
     dots = Array.from({length: DOTS}, randomDot);
     animate();
 
-    // Form submission handling
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const form = event.target;
-      const formData = new FormData(form);
-      
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        // Show success message
-        form.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-        form.reset();
-      })
-      .catch(error => console.error(error));
-    });
+    // Show success message when form is submitted (simplify form handling)
+    if (window.location.search.includes('success=true')) {
+      document.querySelector('form[name="contact"]').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
   </script>
 </body>
 </html>
