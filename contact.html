@@ -113,7 +113,7 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <form class="contact-form" action="https://YOUR-N8N-WEBHOOK-URL" method="POST">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required>
         <label for="email">Email</label>
@@ -122,7 +122,6 @@
         <textarea id="message" name="message" rows="5" required></textarea>
         <button type="submit">Send Message</button>
       </form>
-      <div style="color:#7dd3fc; font-size:0.97rem; margin-top:12px;">(Update the form action with your n8n webhook URL)</div>
     </div>
   </div>
   <script>
