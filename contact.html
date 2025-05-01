@@ -113,7 +113,7 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <form name="contact" method="POST" data-netlify="true">
+      <form name="contact" method="POST" data-netlify="true" id="contact-form">
         <input type="hidden" name="form-name" value="contact" />
         <div class="contact-form">
           <label for="name">Name</label>
@@ -125,6 +125,10 @@
           <button type="submit">Send Message</button>
         </div>
       </form>
+      <div id="form-success" style="display: none; margin-top: 20px; color: #14b8a6; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">✓</div>
+        <p>Thank you! Your message has been sent successfully.</p>
+      </div>
     </div>
   </div>
   <script>
@@ -200,6 +204,27 @@
     // Init dots
     dots = Array.from({length: DOTS}, randomDot);
     animate();
+
+    // Form submission handling
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const formData = new FormData(form);
+      
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        // Show success message
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        form.reset();
+      })
+      .catch(error => console.error(error));
+    });
   </script>
 </body>
 </html>
