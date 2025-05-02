@@ -113,16 +113,8 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <form name="contact" method="POST" data-netlify="true" netlify data-netlify-recaptcha="true">
+      <form name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact" />
-        <input type="hidden" id="submission-timestamp" name="submission-timestamp" value="">
-        <input type="hidden" id="submission-uuid" name="submission-uuid" value="">
-        <input type="hidden" id="submission-count" name="submission-count" value="">
-        <!-- Netlify email configuration -->
-        <input type="hidden" name="email-replyto-tag" value="email">
-        <div style="display: none;">
-          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-        </div>
         <div class="contact-form">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -130,8 +122,6 @@
           <input type="email" id="email" name="email" required>
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
-          <!-- reCAPTCHA -->
-          <div data-netlify-recaptcha="true" style="margin: 20px 0;"></div>
           <button type="submit">Send Message</button>
         </div>
       </form>
@@ -215,33 +205,7 @@
     dots = Array.from({length: DOTS}, randomDot);
     animate();
 
-    // Set timestamp on form submission
-    document.querySelector('form[name="contact"]').addEventListener('submit', function(event) {
-      // Add a brief delay to ensure the timestamp is properly set before submission
-      event.preventDefault();
-      
-      // Generate truly unique identifiers
-      const timestamp = new Date().toISOString();
-      const uuid = crypto.randomUUID ? crypto.randomUUID() : 
-                   ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-                    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
-      const randomCount = Math.floor(Math.random() * 10000000);
-      
-      // Add all unique identifiers to the form
-      document.getElementById('submission-timestamp').value = timestamp;
-      document.getElementById('submission-uuid').value = uuid;
-      document.getElementById('submission-count').value = randomCount;
-      
-      // Continue with form submission after a brief delay
-      setTimeout(() => {
-        // Add success parameter manually for redirect
-        const formAction = event.target.getAttribute('action') || window.location.pathname;
-        event.target.setAttribute('action', formAction + (formAction.includes('?') ? '&' : '?') + 'success=true');
-        event.target.submit();
-      }, 100);
-    });
-
-    // Show success message when form is submitted (simplify form handling)
+    // Show success message when form is submitted 
     if (window.location.search.includes('success=true')) {
       document.querySelector('form[name="contact"]').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
