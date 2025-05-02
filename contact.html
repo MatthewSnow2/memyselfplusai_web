@@ -115,6 +115,7 @@
     <div class="contact-section">
       <form name="contact" method="POST" data-netlify="true" netlify action="/contact/?success=true">
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" id="submission-timestamp" name="submission-timestamp" value="">
         <div style="display: none;">
           <label>Don't fill this out if you're human: <input name="bot-field" /></label>
         </div>
@@ -207,6 +208,21 @@
     // Init dots
     dots = Array.from({length: DOTS}, randomDot);
     animate();
+
+    // Set timestamp on form submission
+    document.querySelector('form[name="contact"]').addEventListener('submit', function(event) {
+      // Add a brief delay to ensure the timestamp is properly set before submission
+      event.preventDefault();
+      
+      // Create a more unique timestamp with current time + random number
+      const timestamp = new Date().toISOString() + '-' + Math.random().toString(36).substring(2, 15);
+      document.getElementById('submission-timestamp').value = timestamp;
+      
+      // Continue with form submission after a brief delay
+      setTimeout(() => {
+        event.target.submit();
+      }, 50);
+    });
 
     // Show success message when form is submitted (simplify form handling)
     if (window.location.search.includes('success=true')) {
