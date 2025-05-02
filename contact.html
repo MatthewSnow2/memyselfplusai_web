@@ -113,7 +113,8 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <form name="contact" method="POST" data-netlify="true">
+      <!-- Specific form implementation for Netlify -->
+      <form name="contact" method="POST" data-netlify="true" netlify action="/contact-success.html">
         <input type="hidden" name="form-name" value="contact" />
         <div class="contact-form">
           <label for="name">Name</label>
