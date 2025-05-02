@@ -221,17 +221,56 @@
     // Show success message when form is submitted 
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formData = new FormData(e.target);
-      const response = await fetch('https://im4tlai.app.n8n.cloud/webhook-test/0fe66293-c690-4ef6-9640-74170cdcbfcb', {
-        method: 'POST',
-        body: JSON.stringify(Object.fromEntries(formData)),
-        headers: { 'Content-Type': 'application/json' }
-      });
-      if (response.ok) {
-        document.getElementById('contact-form').style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      } else {
-        console.error('Error submitting form:', response.status);
+      try {
+        const formData = new FormData(e.target);
+        const formValues = Object.fromEntries(formData);
+        console.log('Form values:', formValues);
+        
+        // Display "Sending..." text on the button
+        const submitButton = e.target.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        // Convert form data to JSON and log it
+        const jsonData = JSON.stringify(formValues);
+        console.log('Sending data to webhook:', jsonData);
+        
+        // Add a timestamp to help make each submission unique
+        const webhookUrl = 'https://im4tlai.app.n8n.cloud/webhook-test/0fe66293-c690-4ef6-9640-74170cdcbfcb' + 
+                          '?t=' + new Date().getTime();
+        console.log('Using webhook URL:', webhookUrl);
+        
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          body: jsonData,
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          mode: 'cors'
+        });
+        
+        console.log('Response status:', response.status);
+        
+        if (response.ok) {
+          console.log('Form submitted successfully');
+          document.getElementById('contact-form').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          console.error('Error response:', await response.text());
+          alert('There was a problem submitting the form. Please try again later.');
+          submitButton.textContent = originalButtonText;
+          submitButton.disabled = false;
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('There was a problem submitting the form. Please try again later or contact us directly.');
+        
+        // Reset button
+        const submitButton = e.target.querySelector('button[type="submit"]');
+        submitButton.textContent = 'Send Message';
+        submitButton.disabled = false;
       }
     });
   </script>
