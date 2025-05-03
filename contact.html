@@ -122,8 +122,8 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <!-- Traditional form submission with production webhook URL -->
-      <form id="contact-form" action="https://im4tlai.app.n8n.cloud/webhook/0fe66293-c690-4ef6-9640-74170cdcbfcb" method="POST" target="_blank">
+      <!-- Formspree form - reliable and simple -->
+      <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST">
         <div class="contact-form">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -131,8 +131,6 @@
           <input type="email" id="email" name="email" required>
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
-          <!-- Add a timestamp to make each submission unique -->
-          <input type="hidden" name="timestamp" id="timestamp-field">
           <button type="submit">Send Message</button>
         </div>
       </form>
@@ -222,9 +220,6 @@
 
     // Show success message and set timestamp on form submission 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
-      // Set timestamp field to make each submission unique
-      document.getElementById('timestamp-field').value = new Date().getTime();
-      
       // Show the success message
       setTimeout(function() {
         document.getElementById('contact-form').style.display = 'none';
