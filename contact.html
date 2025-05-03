@@ -122,8 +122,8 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <!-- n8n webhook form submission -->
-      <form id="contact-form" action="https://im4tlai.app.n8n.cloud/webhook/0fe66293-c690-4ef6-9640-74170cdcbfcb" method="POST">
+      <!-- Formspree form - reliable form handling -->
+      <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST">
         <div class="contact-form">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -131,6 +131,7 @@
           <input type="email" id="email" name="email" required>
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
+          <input type="hidden" name="_next" value="https://memyselfplusai.com/contact-success.html">
           <button type="submit">Send Message</button>
         </div>
       </form>
@@ -219,13 +220,14 @@
     animate();
 
     // Show success message and set timestamp on form submission 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    function handleFormSubmit(event) {
+      event.preventDefault();
       // Show the success message
       setTimeout(function() {
         document.getElementById('contact-form').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       }, 1000);
-    });
+    }
   </script>
 </body>
 </html>
