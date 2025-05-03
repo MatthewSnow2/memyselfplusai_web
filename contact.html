@@ -122,9 +122,14 @@
     <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <!-- Formspree form - reliable form handling -->
+      <!-- Formspree form with n8n integration via email -->
       <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST">
         <div class="contact-form">
+          <input type="hidden" name="_subject" value="New Website Contact Form Submission">
+          <!-- Add these fields to make processing in n8n easier -->
+          <input type="hidden" name="form_source" value="memyselfplusai.com">
+          <input type="hidden" name="submission_timestamp" id="timestamp-field">
+          
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
           <label for="email">Email</label>
@@ -219,15 +224,11 @@
     dots = Array.from({length: DOTS}, randomDot);
     animate();
 
-    // Show success message and set timestamp on form submission 
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      // Show the success message
-      setTimeout(function() {
-        document.getElementById('contact-form').style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      }, 1000);
-    }
+    // Set timestamp and handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      // Set timestamp field for n8n processing
+      document.getElementById('timestamp-field').value = new Date().toISOString();
+    });
   </script>
 </body>
 </html>
