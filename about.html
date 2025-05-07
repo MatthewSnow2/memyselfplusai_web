@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Learn about the Me, Myself Plus AI team, mission, and story." />
   <title>About | Me, Myself Plus AI</title>
-  <link rel="icon" type="image/png" href="/public/images/FullLogo_Transparent_NoBuffer.png" />
+  <link rel="icon" type="image/png" href="public/images/FullLogo_Transparent_NoBuffer.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/navigation.css">
   <style>
     body { font-family: 'Inter', sans-serif; background-color: #0b0b13; margin: 0; }
     #bg-canvas {
@@ -25,7 +26,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding-top: 48px;
+      padding-top: 80px; /* Increased to account for fixed navbar */
     }
     .logo {
       margin-top: 36px;
@@ -88,6 +89,39 @@
       display: block;
       margin-bottom: 0.4em;
     }
+    /* Navigation styles - now consolidated in head */
+    .main-nav { 
+      font-family: 'Inter', sans-serif; 
+      font-size: 1.08rem;
+      position: fixed;
+      top: 0;
+      left: 0; 
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 18px 0;
+      background-color: rgba(11, 11, 19, 0.95);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    }
+    .nav-link { 
+      color: #7dd3fc; 
+      text-decoration: none; 
+      font-weight: 600; 
+      padding: 3px 8px; 
+      border-radius: 6px; 
+      transition: background 0.18s, color 0.18s; 
+    }
+    .nav-link:hover, .nav-link:focus { 
+      background: #14b8a6; 
+      color: #fff; 
+      outline: none; 
+    }
+    .nav-link[aria-current="page"] { 
+      background: #14b8a6; 
+      color: #fff; 
+    }
     @media (max-width: 900px) {
       .about-feature-row, .about-feature-row.reverse {
         flex-direction: column;
@@ -100,40 +134,40 @@
       .about-feature-row { border-radius: 12px; }
       .about-feature-img { min-width: 80px; max-width: 100%; }
       .about-feature-text { padding: 14px 6px; font-size: 1rem; }
+      .main-nav { font-size: 0.95rem; gap: 1.5rem; }
     }
   </style>
 </head>
 <body style="margin:0; padding:0; overflow-x:hidden;">
   <canvas id="bg-canvas"></canvas>
-  <div class="main-content">
-    <img src="/public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
-    <nav class="main-nav" style="position:relative; z-index:2; width:100%; display:flex; justify-content:center; gap:2.5rem; margin-top:18px; margin-bottom:8px;">
-      <a href="/index.html" class="nav-link">Home</a>
-      <a href="/about.html" class="nav-link" aria-current="page">About</a>
-      <a href="/services.html" class="nav-link">Services</a>
-      <a href="/projects.html" class="nav-link">Projects</a>
-      <a href="/blog/index.html" class="nav-link">Blog</a>
-      <a href="/contact.html" class="nav-link">Contact</a>
+  
+  <!-- Fixed navigation header with inline styles for critical rendering -->  
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 60px; background-color: rgba(11, 11, 19, 0.95); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); z-index: 9999; display: flex; justify-content: center; align-items: center; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);">
+    <nav style="display: flex; justify-content: center; align-items: center; gap: 2.5rem; font-family: 'Inter', sans-serif; font-size: 1.08rem;">
+      <a href="index.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Home</a>
+      <a href="about.html" style="color: #fff; background: #14b8a6; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">About</a>
+      <a href="services.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Services</a>
+      <a href="projects.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Projects</a>
+      <a href="blog/index.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Blog</a>
+      <a href="contact.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Contact</a>
     </nav>
-    <style>
-      .main-nav { font-family: 'Inter',sans-serif; font-size:1.08rem; }
-      .nav-link { color:#7dd3fc; text-decoration:none; font-weight:600; padding:3px 8px; border-radius:6px; transition:background 0.18s, color 0.18s; }
-      .nav-link:hover, .nav-link:focus { background:#14b8a6; color:#fff; outline:none; }
-      .nav-link[aria-current="page"] { background:#14b8a6; color:#fff; }
-    </style>
+  </div>
+  
+  <div class="main-content">
+    <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline" style="color:#e65100; font-weight:600;">Why Me, Myself Plus AI?</div>
     <div class="about-features">
       <div class="about-feature-row">
         <img src="/public/images/overwhelmed_cartoon.jpg" alt="Overwhelmed cartoon" class="about-feature-img" />
         <div class="about-feature-text">
           <span class="about-feature-quote">At Me, Myself Plus AI, we get it—life can be chaotic.</span>
-          <br>Between endless to-do lists, repetitive tasks, and constant digital noise, it’s easy to lose focus and miss out on what truly matters.
+          <br>Between endless to-do lists, repetitive tasks, and constant digital noise, it's easy to lose focus and miss out on what truly matters.
         </div>
       </div>
       <div class="about-feature-row reverse">
         <div class="about-feature-text">
-          <span class="about-feature-quote">Whether it’s streamlining workflows, managing daily routines, or turning big goals into actionable steps—Me, Myself Plus AI is your partner in focus.</span>
-          <br>Our intelligent agents and automations are built to help you do more of what matters and less of what doesn’t.
+          <span class="about-feature-quote">Whether it's streamlining workflows, managing daily routines, or turning big goals into actionable steps—Me, Myself Plus AI is your partner in focus.</span>
+          <br>Our intelligent agents and automations are built to help you do more of what matters and less of what doesn't.
         </div>
         <img src="/public/images/focus_cartoon.jpg" alt="Focus cartoon" class="about-feature-img" />
       </div>
@@ -142,7 +176,7 @@
         <div class="about-feature-text">
           <span class="about-feature-quote">Every workflow is different. Every mind works in its own way.</span>
           <br>At Me, Myself Plus AI, we build agentic systems that adapt to you—automating what slows you down, and amplifying what moves you forward.<br>
-          Whether it’s routing data, generating insights, or taking action across your digital life, your AI agents are ready to work smarter, so you can live freer.
+          Whether it's routing data, generating insights, or taking action across your digital life, your AI agents are ready to work smarter, so you can live freer.
         </div>
       </div>
     </div>
