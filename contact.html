@@ -33,22 +33,26 @@
     <div class="headline">Contact Us</div>
     <div class="contact-section">
       <!-- Formspree form with n8n integration via email -->
-      <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST">
-        <div class="contact-form">
+      <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST" class="contact-form">
           <input type="hidden" name="_subject" value="New Website Contact Form Submission">
           <!-- Add these fields to make processing in n8n easier -->
           <input type="hidden" name="form_source" value="memyselfplusai.com">
           <input type="hidden" name="submission_timestamp" id="timestamp-field">
           
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <div class="form-field">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" required class="form-input">
+          </div>
+          <div class="form-field">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" required class="form-input">
+          </div>
+          <div class="form-field">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" rows="5" required class="form-textarea"></textarea>
+          </div>
           <input type="hidden" name="_next" value="https://memyselfplusai.com/contact-success.html">
-          <button type="submit">Send Message</button>
-        </div>
+          <button type="submit" class="form-button">Send Message</button>
       </form>
       <!-- Success message, hidden by default -->
       <div id="form-success" class="hidden">
