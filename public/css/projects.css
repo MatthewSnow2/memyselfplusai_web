@@ -1,6 +1,6 @@
 /* Specific styles for the Projects page */
 
-.projects-container {
+.projects-list, .projects-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
@@ -19,6 +19,8 @@
   flex-direction: column;
   transition: transform 0.18s, box-shadow 0.18s;
   border: 1.5px solid #14b8a6;
+  padding: 32px 28px;
+  margin-bottom: 20px;
 }
 
 .project-card:hover {
@@ -45,9 +47,9 @@
 
 .project-title {
   color: #14b8a6;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .project-tags {
@@ -66,13 +68,14 @@
 }
 
 @media (max-width: 600px) {
-  .projects-container {
+  .projects-list, .projects-container {
     padding: 0 4vw 18px 4vw;
     gap: 18px;
   }
   
   .project-card {
     font-size: 1rem;
+    padding: 24px 20px;
   }
   
   .project-img {
