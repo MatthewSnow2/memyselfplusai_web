@@ -9,164 +9,38 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="public/css/navigation.css">
-  <style>
-    body { font-family: 'Inter', sans-serif; background-color: #0b0b13; margin: 0; }
-    #bg-canvas {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: 0;
-      display: block;
-      background: #0b0b13;
-    }
-    .main-content {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding-top: 80px; /* Increased to account for fixed navbar */
-    }
-    .logo {
-      margin-top: 36px;
-      margin-bottom: 12px;
-      height: 120px;
-      max-width: 340px;
-      width: auto;
-      display: block;
-    }
-    .headline {
-      color: #e65100 !important;
-      font-size: 2.2rem;
-      font-weight: 600;
-      text-align: center;
-      margin-top: 18vh;
-      margin-bottom: 36px;
-      width: 90vw;
-      max-width: 1100px;
-      letter-spacing: -0.01em;
-    }
-    .about-feature-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(30,41,59,0.92);
-      border-radius: 18px;
-      box-shadow: 0 2px 24px 0 rgba(20,184,166,0.07);
-      margin: 0 auto 36px auto;
-      max-width: 1000px;
-      overflow: hidden;
-      transition: transform 0.18s, box-shadow 0.18s;
-      border: 1.5px solid #14b8a6;
-    }
-    .about-feature-row:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
-      border-color: #06b6d4;
-    }
-    .about-feature-row.reverse { flex-direction: row-reverse; }
-    .about-feature-img {
-      width: 320px;
-      min-width: 180px;
-      max-width: 360px;
-      object-fit: cover;
-      display: block;
-      height: 100%;
-    }
-    .about-feature-text {
-      flex: 1 1 400px;
-      padding: 36px 36px 36px 32px;
-      color: #e6f7f7;
-      font-size: 1.13rem;
-      text-align: left;
-      line-height: 1.55;
-    }
-    .about-feature-quote {
-      color: #14b8a6;
-      font-size: 1.17rem;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.4em;
-    }
-    /* Navigation styles - now consolidated in head */
-    .main-nav { 
-      font-family: 'Inter', sans-serif; 
-      font-size: 1.08rem;
-      position: fixed;
-      top: 0;
-      left: 0; 
-      width: 100%;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      padding: 18px 0;
-      background-color: rgba(11, 11, 19, 0.95);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    }
-    .nav-link { 
-      color: #7dd3fc; 
-      text-decoration: none; 
-      font-weight: 600; 
-      padding: 3px 8px; 
-      border-radius: 6px; 
-      transition: background 0.18s, color 0.18s; 
-    }
-    .nav-link:hover, .nav-link:focus { 
-      background: #14b8a6; 
-      color: #fff; 
-      outline: none; 
-    }
-    .nav-link[aria-current="page"] { 
-      background: #14b8a6; 
-      color: #fff; 
-    }
-    @media (max-width: 900px) {
-      .about-feature-row, .about-feature-row.reverse {
-        flex-direction: column;
-      }
-      .about-feature-img { max-width: 100%; }
-      .about-feature-text { padding: 24px 14px; }
-    }
-    @media (max-width: 600px) {
-      .headline { font-size: 1.1rem; margin-top: 12vh; }
-      .about-feature-row { border-radius: 12px; }
-      .about-feature-img { min-width: 80px; max-width: 100%; }
-      .about-feature-text { padding: 14px 6px; font-size: 1rem; }
-      .main-nav { font-size: 0.95rem; gap: 1.5rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/about.css">
 </head>
-<body style="margin:0; padding:0; overflow-x:hidden;">
+<body>
   <canvas id="bg-canvas"></canvas>
   
-  <!-- Fixed navigation header with inline styles for critical rendering -->  
-  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 60px; background-color: rgba(11, 11, 19, 0.95); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); z-index: 9999; display: flex; justify-content: center; align-items: center; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);">
-    <nav style="display: flex; justify-content: center; align-items: center; gap: 2.5rem; font-family: 'Inter', sans-serif; font-size: 1.08rem;">
-      <a href="index.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Home</a>
-      <a href="about.html" style="color: #fff; background: #14b8a6; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">About</a>
-      <a href="services.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Services</a>
-      <a href="projects.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Projects</a>
-      <a href="blog/index.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Resources</a>
-      <a href="contact.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Contact</a>
+  <!-- Fixed navigation header using classes from external CSS -->
+  <div class="header-nav-container">
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link-default">Home</a>
+      <a href="about.html" class="nav-link-current">About</a>
+      <a href="services.html" class="nav-link-default">Services</a>
+      <a href="projects.html" class="nav-link-default">Projects</a>
+      <a href="blog/index.html" class="nav-link-default">Resources</a>
+      <a href="contact.html" class="nav-link-default">Contact</a>
     </nav>
   </div>
   
   <div class="main-content">
     <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
-    <div class="headline" style="color:#e65100; font-weight:600;">Why Me, Myself Plus AI?</div>
+    <div class="headline colored-headline">Why Me, Myself Plus AI?</div>
     <div class="about-features">
       <div class="about-feature-row">
         <img src="/public/images/overwhelmed_cartoon.jpg" alt="Overwhelmed cartoon" class="about-feature-img" />
         <div class="about-feature-text">
-          <span class="about-feature-quote">At <span style="color: #e65100;">Me, Myself Plus AI</span>, we get it—life can be chaotic.</span>
+          <span class="about-feature-quote">At <span class="company-name">Me, Myself Plus AI</span>, we get it—life can be chaotic.</span>
           <br>Between endless to-do lists, repetitive tasks, and constant digital noise, it's easy to lose focus and miss out on what truly matters.
         </div>
       </div>
       <div class="about-feature-row reverse">
         <div class="about-feature-text">
-          <span class="about-feature-quote">Whether it's streamlining workflows, managing daily routines, or turning big goals into actionable steps—<span style="color: #e65100;">Me, Myself Plus AI</span> is your partner in focus.</span>
+          <span class="about-feature-quote">Whether it's streamlining workflows, managing daily routines, or turning big goals into actionable steps—<span class="company-name">Me, Myself Plus AI</span> is your partner in focus.</span>
           <br>Our intelligent agents and automations are built to help you do more of what matters and less of what doesn't.
         </div>
         <img src="/public/images/focus_cartoon.jpg" alt="Focus cartoon" class="about-feature-img" />
@@ -174,12 +48,12 @@
       <div class="about-feature-row">
         <img src="/public/images/ai_agents_banner.jpg" alt="Workflow AI" class="about-feature-img" />
         <div class="about-feature-text">
-          <span class="about-feature-quote">At <span style="color: #e65100;">Me, Myself Plus AI</span>, we empower small and medium businesses with intelligent automation</span>
+          <span class="about-feature-quote">At <span class="company-name">Me, Myself Plus AI</span>, we empower small and medium businesses with intelligent automation</span>
           <br>We're freeing your team from repetitive tasks and accelerating your growth. From AI chatbots that deliver instant customer support, to automated scheduling, lead qualification, and document management, our solutions are designed to save you time, reduce costs, and help you focus on what matters most.
           <br><br>
-          <span style="font-weight: 600;">Ready to see how AI can transform your business?</span>
+          <strong>Ready to see how AI can transform your business?</strong>
           <br><br>
-          <a href="contact.html" class="nav-link" style="display: inline-block; font-size: 1.1rem; padding: 8px 16px; background-color: #14b8a6; color: #fff; border-radius: 6px; text-decoration: none; box-shadow: 0 4px 12px rgba(20,184,166,0.25); transition: transform 0.2s, box-shadow 0.2s;">
+          <a href="contact.html" class="cta-button">
             Book a Free Consultation
           </a>
         </div>

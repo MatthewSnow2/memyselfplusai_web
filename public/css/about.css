@@ -1,0 +1,87 @@
+/* Specific styles for the About page */
+
+.headline-orange {
+  color: #e65100 !important;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 18vh;
+  margin-bottom: 36px;
+  width: 90vw;
+  max-width: 1100px;
+  letter-spacing: -0.01em;
+}
+
+.colored-headline {
+  color: #e65100;
+  font-weight: 600;
+}
+
+.company-name {
+  color: #e65100;
+}
+
+.about-feature-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30,41,59,0.92);
+  border-radius: 18px;
+  box-shadow: 0 2px 24px 0 rgba(20,184,166,0.07);
+  margin: 0 auto 36px auto;
+  max-width: 1000px;
+  overflow: hidden;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border: 1.5px solid #14b8a6;
+}
+
+.about-feature-row:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
+  border-color: #06b6d4;
+}
+
+.about-feature-row.reverse { 
+  flex-direction: row-reverse; 
+}
+
+.about-feature-img {
+  width: 320px;
+  min-width: 180px;
+  max-width: 360px;
+  object-fit: cover;
+  display: block;
+  height: 100%;
+}
+
+.about-feature-text {
+  flex: 1 1 400px;
+  padding: 36px 36px 36px 32px;
+  color: #e6f7f7;
+  font-size: 1.13rem;
+  text-align: left;
+  line-height: 1.55;
+}
+
+.about-feature-quote {
+  color: #14b8a6;
+  font-size: 1.17rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4em;
+}
+
+@media (max-width: 900px) {
+  .about-feature-row, .about-feature-row.reverse {
+    flex-direction: column;
+  }
+  .about-feature-img { max-width: 100%; }
+  .about-feature-text { padding: 24px 14px; }
+}
+
+@media (max-width: 600px) {
+  .headline-orange { font-size: 1.1rem; margin-top: 12vh; }
+  .about-feature-row { border-radius: 12px; }
+  .about-feature-img { min-width: 80px; max-width: 100%; }
+  .about-feature-text { padding: 14px 6px; font-size: 1rem; }
+}

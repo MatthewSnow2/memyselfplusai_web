@@ -9,135 +9,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="public/css/navigation.css">
-  <style>
-    body { font-family: 'Inter', sans-serif; background-color: #0b0b13; margin: 0; }
-    #bg-canvas {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: 0;
-      display: block;
-      background: #0b0b13;
-    }
-    .main-content {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding-top: 90px !important; /* Further increased to account for fixed navbar */
-    }
-    .logo {
-      margin-top: 36px;
-      margin-bottom: 12px;
-      height: 120px;
-      max-width: 340px;
-      width: auto;
-      display: block;
-    }
-    .headline {
-      color: #fff;
-      font-size: 2.2rem;
-      font-weight: 600;
-      text-align: center;
-      margin-top: 18vh;
-      margin-bottom: 28px;
-      width: 90vw;
-      max-width: 1100px;
-      letter-spacing: -0.01em;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      margin: 0 auto;
-      max-width: 1100px;
-      padding: 0 8vw 36px 8vw;
-      justify-items: start;
-      width: 100%;
-    }
-    .service-card {
-      background: rgba(30,41,59,0.90);
-      border-radius: 18px;
-      box-shadow: 0 2px 24px 0 rgba(20,184,166,0.07);
-      padding: 32px 20px;
-      color: #e6f7f7;
-      font-size: 1.1rem;
-      text-align: left;
-      transition: transform 0.18s, box-shadow 0.18s;
-      border: 1.5px solid #14b8a6;
-      width: 100%;
-      max-width: 600px;
-    }
-    .service-card:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
-      border-color: #06b6d4;
-    }
-    .service-title {
-      color: #14b8a6;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    /* Navigation styles - now consolidated in head */
-    .main-nav { 
-      font-family: 'Inter', sans-serif; 
-      font-size: 1.08rem;
-      position: fixed;
-      top: 0;
-      left: 0; 
-      width: 100%;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      padding: 18px 0;
-      background-color: rgba(11, 11, 19, 0.95);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    }
-    .nav-link { 
-      color: #7dd3fc; 
-      text-decoration: none; 
-      font-weight: 600; 
-      padding: 3px 8px; 
-      border-radius: 6px; 
-      transition: background 0.18s, color 0.18s; 
-    }
-    .nav-link:hover, .nav-link:focus { 
-      background: #14b8a6; 
-      color: #fff; 
-      outline: none; 
-    }
-    .nav-link[aria-current="page"] { 
-      background: #14b8a6; 
-      color: #fff; 
-    }
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .logo { height: 80px; max-width: 220px; }
-      .headline { font-size: 1.1rem; margin-top: 12vh; }
-      .services-grid { gap: 18px; padding: 0 4vw 18px 4vw; }
-      .service-card { font-size: 1rem; padding: 18px 8px; }
-      .main-nav { font-size: 0.95rem; gap: 1.5rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/services.css">
+  <!-- Styles moved to external CSS files -->
 </head>
-<body style="margin:0; padding:0; overflow-x:hidden;">
+<body>
   <canvas id="bg-canvas"></canvas>
   
-  <!-- Fixed navigation header with inline styles for critical rendering -->  
-  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 60px; background-color: rgba(11, 11, 19, 0.95); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); z-index: 9999; display: flex; justify-content: center; align-items: center; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);">
-    <nav style="display: flex; justify-content: center; align-items: center; gap: 2.5rem; font-family: 'Inter', sans-serif; font-size: 1.08rem;">
-      <a href="index.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Home</a>
-      <a href="about.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">About</a>
-      <a href="services.html" style="color: #fff; background: #14b8a6; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Services</a>
-      <a href="projects.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Projects</a>
-      <a href="blog/index.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Resources</a>
-      <a href="contact.html" style="color: #7dd3fc; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background 0.18s, color 0.18s;">Contact</a>
+  <!-- Fixed navigation header using classes from external CSS -->
+  <div class="header-nav-container">
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link-default">Home</a>
+      <a href="about.html" class="nav-link-default">About</a>
+      <a href="services.html" class="nav-link-current">Services</a>
+      <a href="projects.html" class="nav-link-default">Projects</a>
+      <a href="blog/index.html" class="nav-link-default">Resources</a>
+      <a href="contact.html" class="nav-link-default">Contact</a>
     </nav>
   </div>
   
@@ -150,7 +37,7 @@
         <div>
           <p>Real-world statistics show how AI automation and agents are saving small businesses time and money:</p>
           
-          <ul style="list-style-type: disc; padding-left: 20px; margin-top: 16px;">
+          <ul class="service-list">
             <li><strong>40+ hours per month</strong> saved by businesses implementing customer support chatbots, equivalent to a 25% reduction in support costs</li>
             <li><strong>41% of small businesses</strong> redirect time saved by AI to higher-value work, improving overall productivity</li>
             <li><strong>30% of teams</strong> report significant time savings from AI-powered tools, with automation handling routine tasks</li>
@@ -159,8 +46,8 @@
         </div>
       </div>
       
-      <div style="width: 100%; margin-top: 20px; margin-bottom: 8px;">
-        <h2 style="color: #fff; font-size: 1.8rem; font-weight: 600; text-align: center;">What We Offer</h2>
+      <div class="section-container">
+        <h2 class="section-title">What We Offer</h2>
       </div>
       
       <div class="service-card">
@@ -169,7 +56,7 @@
           <p><strong>The Challenge:</strong></p>
           <p>Service businesses struggle to provide instant, 24/7 responses to customer inquiries, leading to lost leads and poor customer satisfaction.</p>
           
-          <p style="margin-top: 16px;"><strong>AI Solution:</strong></p>
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
           <p>AI-powered chatbots and voice agents handle routine questions, appointment bookings, and support requests 24/7. While chatbots interact with customers via text, AI voice agents use natural, conversational speech to talk with callers just like a real human would—answering questions, guiding them through processes, or booking appointments over the phone. Both solutions reduce staff workload, ensure no inquiry slips through the cracks, and significantly enhance the overall customer experience by providing instant, reliable assistance any time of day.</p>
         </div>
       </div>
@@ -180,7 +67,7 @@
           <p><strong>The Challenge:</strong></p>
           <p>Manual scheduling, billing, and customer management consume significant time and are prone to human error, impacting efficiency and profitability.</p>
           
-          <p style="margin-top: 16px;"><strong>AI Solution:</strong></p>
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
           <p>AI automates repetitive administrative tasks such as appointment scheduling, invoicing, and CRM updates. This minimizes errors, saves time, and allows staff to focus on higher-value activities.</p>
         </div>
       </div>
@@ -191,11 +78,11 @@
           <p><strong>The Challenge:</strong></p>
           <p>Agents spend excessive time chasing unqualified leads. Missed opportunities due to slow response times.</p>
           
-          <p style="margin-top: 16px;"><strong>AI Solution:</strong></p>
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
           <p>AI tools analyze data from websites, social media, and listing platforms to identify and prioritize high-intent leads, automating initial outreach and follow-up.</p>
           
-          <p style="margin-top: 16px;"><strong>Benefits:</strong></p>
-          <ul style="list-style-type: disc; padding-left: 20px; margin-top: 8px;">
+          <p class="service-subtitle"><strong>Benefits:</strong></p>
+          <ul class="service-list-compact">
             <li>Focuses agent efforts on the most promising prospects.</li>
             <li>Increases conversion rates and sales efficiency.</li>
           </ul>
@@ -208,19 +95,19 @@
           <p><strong>The Challenge:</strong></p>
           <p>Manual paperwork is time-consuming, error-prone, and can delay transactions. Risk of missing signatures, incomplete fields, or non-compliance with regulations.</p>
           
-          <p style="margin-top: 16px;"><strong>AI Solution:</strong></p>
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
           <p>AI systems can automatically generate, review, and organize legal documents such as leases, purchase agreements, and disclosures using natural language processing.</p>
           
-          <p style="margin-top: 16px;"><strong>Benefits:</strong></p>
-          <ul style="list-style-type: disc; padding-left: 20px; margin-top: 8px;">
+          <p class="service-subtitle"><strong>Benefits:</strong></p>
+          <ul class="service-list-compact">
             <li>Accelerates deal closure by automating repetitive documentation tasks.</li>
             <li>Reduces errors and ensures compliance, improving client trust and satisfaction.</li>
           </ul>
         </div>
       </div>
       
-      <div style="width: 100%; margin-top: 40px; margin-bottom: 40px; display: flex; justify-content: center;">
-        <a href="contact.html" class="nav-link" style="font-size: 1.3rem; padding: 12px 24px; background-color: #14b8a6; color: #fff; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(20,184,166,0.25); transition: transform 0.2s, box-shadow 0.2s;">
+      <div class="section-container">
+        <a href="contact.html" class="cta-button">
           Book a Free Consultation
         </a>
       </div>
