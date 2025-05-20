@@ -115,6 +115,12 @@
   margin-bottom: 30px;
 }
 
+.cta-container {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   .hero-subheading {
     font-size: 1.1rem;
