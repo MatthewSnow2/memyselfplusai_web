@@ -7,6 +7,7 @@
   margin: 0 auto;
   max-width: 1000px;
   padding: 10px 8vw 36px 8vw;
+  width: 90%;
 }
 
 .project-card {
@@ -34,10 +35,12 @@
 }
 
 .project-content {
-  padding: 24px 20px;
+  padding: 32px 28px;
   color: #e6f7f7;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .project-title {
