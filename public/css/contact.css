@@ -152,7 +152,7 @@
 
 /* Calendly CTA button styles */
 .calendly-cta-container {
-  margin: 30px auto 40px auto;
+  margin: 126px auto 40px auto; /* Increased top margin by 96px (1 inch) */
   text-align: center;
 }
 
