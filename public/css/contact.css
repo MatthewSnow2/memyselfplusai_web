@@ -150,6 +150,31 @@
   }
 }
 
+/* Calendly CTA button styles */
+.calendly-cta-container {
+  margin: 20px auto 30px auto;
+  text-align: center;
+}
+
+.calendly-cta-button {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  background-color: #e65100;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(230, 81, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.calendly-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(230, 81, 0, 0.4);
+  background-color: #f57c00;
+}
+
 /* Success message styles */
 .hidden {
   display: none;
