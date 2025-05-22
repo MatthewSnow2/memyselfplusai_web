@@ -152,27 +152,55 @@
 
 /* Calendly CTA button styles */
 .calendly-cta-container {
-  margin: 20px auto 30px auto;
+  margin: 30px auto 40px auto;
   text-align: center;
 }
 
 .calendly-cta-button {
   display: inline-block;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 12px 24px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 14px 28px;
   background-color: #e65100;
-  color: #ffffff;
+  color: #ffffff !important;
   border-radius: 8px;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(230, 81, 0, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  box-shadow: 0 6px 14px rgba(230, 81, 0, 0.4);
+  transition: all 0.3s ease;
+  border: 2px solid #e65100;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.calendly-cta-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: -1;
 }
 
 .calendly-cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(230, 81, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(230, 81, 0, 0.5);
   background-color: #f57c00;
+  border-color: #f57c00;
+}
+
+.calendly-cta-button:hover:before {
+  width: 100%;
+}
+
+.calendly-cta-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
 }
 
 /* Success message styles */
