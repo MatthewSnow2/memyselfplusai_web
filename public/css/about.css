@@ -136,15 +136,15 @@
 }
 
 .demo-instructions {
-  color: #14b8a6;
+  color: #7dd3fc; /* Light blue color */
   font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.4;
   margin-top: 10px;
-  border: 1px dashed #14b8a6;
+  border: 1px dashed #7dd3fc;
   padding: 8px 12px;
   border-radius: 6px;
-  background-color: rgba(20, 184, 166, 0.08);
+  background-color: rgba(125, 211, 252, 0.08);
   display: inline-block;
 }
 
