@@ -132,6 +132,27 @@
   color: #e6f7f7;
   font-size: 1.1rem;
   line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.demo-instructions {
+  color: #14b8a6;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 10px;
+  border: 1px dashed #14b8a6;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: rgba(20, 184, 166, 0.08);
+  display: inline-block;
+}
+
+.demo-note {
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-style: italic;
+  opacity: 0.9;
 }
 
 .coming-soon {
