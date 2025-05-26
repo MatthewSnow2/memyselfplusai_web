@@ -136,16 +136,17 @@
 }
 
 .demo-instructions {
-  color: #7dd3fc; /* Light blue color */
+  color: #38bdf8; /* Brighter, more saturated blue */
   font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.4;
   margin-top: 10px;
-  border: 1px dashed #7dd3fc;
+  border: 1px dashed #38bdf8;
   padding: 8px 12px;
   border-radius: 6px;
-  background-color: rgba(125, 211, 252, 0.08);
+  background-color: rgba(56, 189, 248, 0.09);
   display: inline-block;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 .demo-note {
