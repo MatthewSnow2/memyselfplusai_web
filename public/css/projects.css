@@ -23,6 +23,20 @@
   margin-bottom: 20px;
 }
 
+.coming-soon-card {
+  min-height: 300px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.coming-soon-text {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #14b8a6;
+  opacity: 0.8;
+}
+
 .project-card:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
