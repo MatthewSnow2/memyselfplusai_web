@@ -57,6 +57,36 @@
   flex: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-content p {
+  margin-bottom: 24px;
+}
+
+.project-link-container {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.project-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #14b8a6;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: #0d9488;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
 }
 
 .project-title {
