@@ -38,10 +38,8 @@
       <!-- Formspree form with n8n integration via email -->
       <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST" class="contact-form">
           <input type="hidden" name="_subject" value="New Website Contact Form Submission">
-          <!-- Add these fields to make processing in n8n easier -->
           <input type="hidden" name="form_source" value="memyselfplusai.com">
           <input type="hidden" name="submission_timestamp" id="timestamp-field">
-          
           <div class="form-field">
             <label for="name" class="form-label">Name</label>
             <input type="text" id="name" name="name" required class="form-input">
@@ -54,9 +52,9 @@
             <label for="message" class="form-label">Message</label>
             <textarea id="message" name="message" rows="5" required class="form-textarea"></textarea>
           </div>
-          <input type="hidden" name="_next" value="https://memyselfplusai.com/contact-success.html">
           <button type="submit" class="form-button">Send Message</button>
       </form>
+      <div id="form-error" class="hidden" style="color: red; margin-top: 1em;">Something went wrong. Please try again later.</div>
       <!-- Success message, hidden by default -->
       <div id="form-success" class="hidden">
         <div class="success-section">
@@ -142,9 +140,28 @@
     animate();
 
     // Set timestamp and handle form submission
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      // Set timestamp field for n8n processing
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
       document.getElementById('timestamp-field').value = new Date().toISOString();
+      const form = e.target;
+      const data = new FormData(form);
+      const errorDiv = document.getElementById('form-error');
+      errorDiv.classList.add('hidden');
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.classList.add('hidden');
+          document.getElementById('form-success').classList.remove('hidden');
+        } else {
+          errorDiv.classList.remove('hidden');
+        }
+      } catch (err) {
+        errorDiv.classList.remove('hidden');
+      }
     });
   </script>
 </body>
