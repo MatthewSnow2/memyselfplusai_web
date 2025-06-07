@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Me, Myself Plus AI is a boutique AI studio in Nashville creating custom autonomous-agent solutions for small-to-mid-size businesses." />
+  <meta name="keywords" content="AI, autonomous agents, automation, consulting, training, Nashville, small business, Me Myself Plus AI, agentic systems" />
+  <meta name="author" content="Me, Myself Plus AI" />
+  <meta property="og:title" content="Me, Myself Plus AI | Focus on What Matters Most" />
+  <meta property="og:description" content="Empowering Individuals by Making AI Integration Accessible and Simple. Boutique AI studio in Nashville." />
+  <meta property="og:image" content="public/images/FullLogo_Transparent_NoBuffer.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.yourdomain.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Me, Myself Plus AI" />
+  <meta name="twitter:description" content="Boutique AI studio in Nashville offering custom agentic automation." />
+  <meta name="twitter:image" content="public/images/FullLogo_Transparent_NoBuffer.png" />
+  <title>Me, Myself Plus AI | Focus on What Matters Most</title>
+  <link rel="icon" type="image/png" href="public/images/FullLogo_Transparent_NoBuffer.png" />
+  <link rel="stylesheet" href="public/css/navigation.css">
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <!-- Styles moved to external CSS files -->
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  
+  <!-- Fixed navigation header using classes from external CSS -->  
+  <div class="header-nav-container">
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link-current">Home</a>
+      <a href="about.html" class="nav-link-default">About</a>
+      <a href="services.html" class="nav-link-default">Services</a>
+      <a href="projects.html" class="nav-link-default">Projects</a>
+      <a href="blog/index.html" class="nav-link-default">Resources</a>
+      <a href="contact.html" class="nav-link-default">Contact</a>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
+    <div class="headline">I help businesses get more customers while spending less time on the phone.</div>
+    <div class="cta-container">
+      <a href="contact.html" class="cta-button">Save time and money with custom solutions</a>
+    </div>
+  </div>
+  <script>
+    // Animated glowing dots background (canvas)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let dots = [];
+    const DOTS = 40;
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    function randomDot() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 6 + Math.random() * 10,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
+      };
+    }
+    function distance(a, b) {
+      return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+    }
+    function updateDots() {
+      for (let d of dots) {
+        d.x += d.dx;
+        d.y += d.dy;
+        if (d.x < 0 || d.x > width) d.dx *= -1;
+        if (d.y < 0 || d.y > height) d.dy *= -1;
+      }
+      // Occasionally merge dots
+      for (let i = 0; i < dots.length; ++i) {
+        for (let j = i+1; j < dots.length; ++j) {
+          let a = dots[i], b = dots[j];
+          if (distance(a, b) < (a.r + b.r) * 0.8) {
+            // Merge: average position, increase radius
+            a.x = (a.x + b.x) / 2;
+            a.y = (a.y + b.y) / 2;
+            a.r = Math.min(24, a.r + b.r * 0.18);
+            b.x = Math.random() * width;
+            b.y = Math.random() * height;
+            b.r = 6 + Math.random() * 10;
+          }
+        }
+      }
+    }
+    function drawDots() {
+      ctx.clearRect(0, 0, width, height);
+      for (let d of dots) {
+        let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
+        grad.addColorStop(0, d.color);
+        grad.addColorStop(1, 'rgba(20,184,166,0)');
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+        ctx.fillStyle = grad;
+        ctx.shadowColor = '#14b8a6';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+      }
+    }
+    function animate() {
+      updateDots();
+      drawDots();
+      requestAnimationFrame(animate);
+    }
+    // Init dots
+    dots = Array.from({length: DOTS}, randomDot);
+    animate();
+  </script>
+</body>
+</html>

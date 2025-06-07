@@ -1,0 +1,92 @@
+/* Specific styles for the Services page */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 8vw 36px 8vw;
+  justify-items: start;
+  width: 100%;
+}
+
+.service-card {
+  background: rgba(30,41,59,0.90);
+  border-radius: 18px;
+  box-shadow: 0 2px 24px 0 rgba(20,184,166,0.07);
+  padding: 32px 20px;
+  color: #e6f7f7;
+  font-size: 1.1rem;
+  text-align: left;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border: 1.5px solid #14b8a6;
+  width: 100%;
+  max-width: 600px;
+}
+
+.service-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
+  border-color: #06b6d4;
+}
+
+.service-title {
+  color: #14b8a6;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  color: #fff; 
+  font-size: 1.8rem; 
+  font-weight: 600; 
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.section-container {
+  width: 100%; 
+  margin-top: 40px; 
+  margin-bottom: 40px; 
+  display: flex; 
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .services-grid { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid { 
+    gap: 18px; 
+    padding: 0 4vw 18px 4vw; 
+  }
+  .service-card { 
+    font-size: 1rem; 
+    padding: 18px 8px; 
+  }
+}
+
+/* Additional styles for service cards */
+.service-subtitle {
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+.service-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 16px;
+}
+
+.service-list-compact {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 8px;
+}

@@ -1,0 +1,220 @@
+/* Specific styles for the Contact page */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 36px auto;
+  padding: 0 8vw;
+}
+
+.contact-text {
+  color: #e6f7f7;
+  font-size: 1.13rem;
+  text-align: center;
+  margin-bottom: 32px;
+  max-width: 700px;
+}
+
+.contact-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.contact-method {
+  background: rgba(30,41,59,0.90);
+  border-radius: 18px;
+  box-shadow: 0 2px 24px 0 rgba(20,184,166,0.07);
+  padding: 20px;
+  color: #e6f7f7;
+  font-size: 1.05rem;
+  text-align: center;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border: 1.5px solid #14b8a6;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-method:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
+  border-color: #06b6d4;
+}
+
+.contact-method-title {
+  color: #14b8a6;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.contact-method-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: #7dd3fc;
+}
+
+.contact-method-link {
+  color: #7dd3fc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-method-link:hover {
+  color: #14b8a6;
+  text-decoration: underline;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto 0 auto;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  color: #7dd3fc;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.form-input,
+.form-textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background-color: rgba(30, 41, 59, 0.8);
+  color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.25);
+}
+
+.form-textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.form-button {
+  padding: 12px;
+  background-color: #14b8a6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.form-button:hover {
+  background-color: #0d9488;
+  transform: translateY(-2px);
+}
+
+.form-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .contact-text {
+    font-size: 1rem;
+  }
+  .contact-method {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Calendly CTA button styles */
+.calendly-cta-container {
+  margin: 126px auto 40px auto; /* Increased top margin by 96px (1 inch) */
+  text-align: center;
+}
+
+.calendly-cta-button {
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  background-color: #e65100;
+  color: #ffffff !important;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(230, 81, 0, 0.4);
+  transition: all 0.3s ease;
+  border: 2px solid #e65100;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.calendly-cta-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.calendly-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(230, 81, 0, 0.5);
+  background-color: #f57c00;
+  border-color: #f57c00;
+}
+
+.calendly-cta-button:hover:before {
+  width: 100%;
+}
+
+.calendly-cta-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
+}
+
+/* Success message styles */
+.hidden {
+  display: none;
+}
+
+.success-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #14b8a6;
+}

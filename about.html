@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about the Me, Myself Plus AI team, mission, and story." />
+  <title>About | Me, Myself Plus AI</title>
+  <link rel="icon" type="image/png" href="public/images/FullLogo_Transparent_NoBuffer.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/navigation.css">
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/about.css">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  
+  <!-- Fixed navigation header using classes from external CSS -->
+  <div class="header-nav-container">
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link-default">Home</a>
+      <a href="about.html" class="nav-link-current">About</a>
+      <a href="services.html" class="nav-link-default">Services</a>
+      <a href="projects.html" class="nav-link-default">Projects</a>
+      <a href="blog/index.html" class="nav-link-default">Resources</a>
+      <a href="contact.html" class="nav-link-default">Contact</a>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
+    <div class="headline colored-headline">Meet Our AI Voice Agents</div>
+    
+    <div class="agent-profiles">
+      <!-- Sam Card -->
+      <div class="agent-card">
+        <a href="https://vapi.ai?demo=true&shareKey=54e98134-8ae6-4156-abe7-6c94736ad5de&assistantId=9dba090a-0e04-4784-8381-7ad6ad7fffa9" target="_blank" rel="noopener" class="agent-link">
+          <div class="agent-img-container">
+            <img src="public/images/Sam.png" alt="Sam - HVAC call agent" class="agent-img">
+          </div>
+          <div class="agent-info">
+            <h3 class="agent-name">Meet Sam</h3>
+            <p class="agent-description">Sam is an inbound call agent for HVAC professionals</p>
+            <p class="demo-instructions">Click portrait for live demo <span class="demo-note">(speaker and mic required for full demo)</span></p>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Morgan Card -->
+      <div class="agent-card">
+        <a href="https://vapi.ai?demo=true&shareKey=54e98134-8ae6-4156-abe7-6c94736ad5de&assistantId=850dc773-39f7-42de-977d-7767c2c97ebb" target="_blank" rel="noopener" class="agent-link">
+          <div class="agent-img-container">
+            <img src="public/images/Morgan.png" alt="Morgan - Lead qualification agent" class="agent-img">
+          </div>
+          <div class="agent-info">
+            <h3 class="agent-name">Meet Morgan</h3>
+            <p class="agent-description">Morgan is an outbound lead qualification pro</p>
+            <p class="demo-instructions">Click portrait for live demo <span class="demo-note">(speaker and mic required for full demo)</span></p>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Rebecca Card -->
+      <div class="agent-card">
+        <a href="https://vapi.ai?demo=true&shareKey=54e98134-8ae6-4156-abe7-6c94736ad5de&assistantId=495c7ad8-1560-44d1-baef-50b3bf8cdcfa" target="_blank" rel="noopener" class="agent-link">
+          <div class="agent-img-container">
+            <img src="public/images/Rebecca.png" alt="Rebecca - Electrician call agent" class="agent-img">
+          </div>
+          <div class="agent-info">
+            <h3 class="agent-name">Meet Rebecca</h3>
+            <p class="agent-description">Rebecca is an inbound call agent for electrician professionals</p>
+            <p class="demo-instructions">Click portrait for live demo <span class="demo-note">(speaker and mic required for full demo)</span></p>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Marianne Card (Coming Soon) -->
+      <div class="agent-card">
+        <div class="agent-link">
+          <div class="agent-img-container">
+            <div class="agent-img-placeholder" id="marianne-img">
+              <div class="agent-img-text">Marianne</div>
+            </div>
+          </div>
+          <div class="agent-info">
+            <h3 class="agent-name">Meet Marianne</h3>
+            <p class="agent-description">Marianne is an interactive avatar <span class="coming-soon">COMING SOON</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Animated glowing dots background (canvas)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let dots = [];
+    const DOTS = 40;
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    function randomDot() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 6 + Math.random() * 10,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
+      };
+    }
+    function distance(a, b) {
+      return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+    }
+    function updateDots() {
+      for (let d of dots) {
+        d.x += d.dx;
+        d.y += d.dy;
+        if (d.x < 0 || d.x > width) d.dx *= -1;
+        if (d.y < 0 || d.y > height) d.dy *= -1;
+      }
+      // Occasionally merge dots
+      for (let i = 0; i < dots.length; ++i) {
+        for (let j = i+1; j < dots.length; ++j) {
+          let a = dots[i], b = dots[j];
+          if (distance(a, b) < (a.r + b.r) * 0.8) {
+            // Merge: average position, increase radius
+            a.x = (a.x + b.x) / 2;
+            a.y = (a.y + b.y) / 2;
+            a.r = Math.min(24, a.r + b.r * 0.18);
+            b.x = Math.random() * width;
+            b.y = Math.random() * height;
+            b.r = 6 + Math.random() * 10;
+          }
+        }
+      }
+    }
+    function drawDots() {
+      ctx.clearRect(0, 0, width, height);
+      for (let d of dots) {
+        let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
+        grad.addColorStop(0, d.color);
+        grad.addColorStop(1, 'rgba(20,184,166,0)');
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+        ctx.fillStyle = grad;
+        ctx.shadowColor = '#14b8a6';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+      }
+    }
+    function animate() {
+      updateDots();
+      drawDots();
+      requestAnimationFrame(animate);
+    }
+    // Init dots
+    dots = Array.from({length: DOTS}, randomDot);
+    animate();
+  </script>
+</body>
+</html>

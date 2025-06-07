@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore AI automation, agent design, consulting, and training services from Me, Myself Plus AI." />
+  <title>Services | Me, Myself Plus AI</title>
+  <link rel="icon" type="image/png" href="public/images/FullLogo_Transparent_NoBuffer.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/navigation.css">
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/services.css">
+  <!-- Styles moved to external CSS files -->
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  
+  <!-- Fixed navigation header using classes from external CSS -->
+  <div class="header-nav-container">
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link-default">Home</a>
+      <a href="about.html" class="nav-link-default">About</a>
+      <a href="services.html" class="nav-link-current">Services</a>
+      <a href="projects.html" class="nav-link-default">Projects</a>
+      <a href="blog/index.html" class="nav-link-default">Resources</a>
+      <a href="contact.html" class="nav-link-default">Contact</a>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
+    <div class="headline">AI Services and Solutions</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">⚙️ See How AI Can Help Your Business</div>
+        <div>
+          <p>Real-world statistics show how AI automation and agents are saving small businesses time and money:</p>
+          
+          <ul class="service-list">
+            <li><strong>40+ hours per month</strong> saved by businesses implementing customer support chatbots, equivalent to a 25% reduction in support costs</li>
+            <li><strong>41% of small businesses</strong> redirect time saved by AI to higher-value work, improving overall productivity</li>
+            <li><strong>30% of teams</strong> report significant time savings from AI-powered tools, with automation handling routine tasks</li>
+            <li><strong>36% of small businesses</strong> have maintained stable pricing during inflation by offsetting costs with AI efficiencies</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="section-container">
+        <h2 class="section-title">What We Offer</h2>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-title">💬 AI Voice Agents and Chatbots for Customer Support</div>
+        <div>
+          <p><strong>The Challenge:</strong></p>
+          <p>Service businesses struggle to provide instant, 24/7 responses to customer inquiries, leading to lost leads and poor customer satisfaction.</p>
+          
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
+          <p>AI-powered chatbots and voice agents handle routine questions, appointment bookings, and support requests 24/7. While chatbots interact with customers via text, AI voice agents use natural, conversational speech to talk with callers just like a real human would—answering questions, guiding them through processes, or booking appointments over the phone. Both solutions reduce staff workload, ensure no inquiry slips through the cracks, and significantly enhance the overall customer experience by providing instant, reliable assistance any time of day.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-title">⚡ Process Automation (Scheduling, Billing, CRM and Proposals)</div>
+        <div>
+          <p><strong>The Challenge:</strong></p>
+          <p>Manual scheduling, billing, and customer management consume significant time and are prone to human error, impacting efficiency and profitability.</p>
+          
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
+          <p>AI automates repetitive administrative tasks such as appointment scheduling, invoicing, and CRM updates. This minimizes errors, saves time, and allows staff to focus on higher-value activities.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-title">💼 AI-Powered Lead Enrichment</div>
+        <div>
+          <p><strong>The Challenge:</strong></p>
+          <p>Agents spend excessive time chasing unqualified leads. Missed opportunities due to slow response times.</p>
+          
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
+          <p>AI tools analyze data from websites, social media, and listing platforms to identify and prioritize high-intent leads, automating initial outreach and follow-up.</p>
+          
+          <p class="service-subtitle"><strong>Benefits:</strong></p>
+          <ul class="service-list-compact">
+            <li>Focuses agent efforts on the most promising prospects.</li>
+            <li>Increases conversion rates and sales efficiency.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-title">📝 Automated Document Management & Contract Generation</div>
+        <div>
+          <p><strong>The Challenge:</strong></p>
+          <p>Manual paperwork is time-consuming, error-prone, and can delay transactions. Risk of missing signatures, incomplete fields, or non-compliance with regulations.</p>
+          
+          <p class="service-subtitle"><strong>AI Solution:</strong></p>
+          <p>AI systems can automatically generate, review, and organize legal documents such as leases, purchase agreements, and disclosures using natural language processing.</p>
+          
+          <p class="service-subtitle"><strong>Benefits:</strong></p>
+          <ul class="service-list-compact">
+            <li>Accelerates deal closure by automating repetitive documentation tasks.</li>
+            <li>Reduces errors and ensures compliance, improving client trust and satisfaction.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="section-container">
+        <a href="contact.html" class="cta-button">
+          Book a Free Consultation
+        </a>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+    // Animated glowing dots background (canvas)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let dots = [];
+    const DOTS = 40;
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    function randomDot() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 6 + Math.random() * 10,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
+      };
+    }
+    function distance(a, b) {
+      return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+    }
+    function updateDots() {
+      for (let d of dots) {
+        d.x += d.dx;
+        d.y += d.dy;
+        if (d.x < 0 || d.x > width) d.dx *= -1;
+        if (d.y < 0 || d.y > height) d.dy *= -1;
+      }
+      // Occasionally merge dots
+      for (let i = 0; i < dots.length; ++i) {
+        for (let j = i+1; j < dots.length; ++j) {
+          let a = dots[i], b = dots[j];
+          if (distance(a, b) < (a.r + b.r) * 0.8) {
+            // Merge: average position, increase radius
+            a.x = (a.x + b.x) / 2;
+            a.y = (a.y + b.y) / 2;
+            a.r = Math.min(24, a.r + b.r * 0.18);
+            b.x = Math.random() * width;
+            b.y = Math.random() * height;
+            b.r = 6 + Math.random() * 10;
+          }
+        }
+      }
+    }
+    function drawDots() {
+      ctx.clearRect(0, 0, width, height);
+      for (let d of dots) {
+        let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
+        grad.addColorStop(0, d.color);
+        grad.addColorStop(1, 'rgba(20,184,166,0)');
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+        ctx.fillStyle = grad;
+        ctx.shadowColor = '#14b8a6';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+      }
+    }
+    function animate() {
+      updateDots();
+      drawDots();
+      requestAnimationFrame(animate);
+    }
+    // Init dots
+    dots = Array.from({length: DOTS}, randomDot);
+    animate();
+  </script>
+</body>
+</html>

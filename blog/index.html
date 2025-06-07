@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DIY videos, workflow tutorials, downloads, and FAQ from Me, Myself Plus AI." />
+  <title>Resources | Me, Myself Plus AI</title>
+  <link rel="icon" type="image/png" href="../public/images/FullLogo_Transparent_NoBuffer.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../public/css/navigation.css">
+  <link rel="stylesheet" href="../public/css/main.css">
+  <link rel="stylesheet" href="../public/css/resources.css">
+  <!-- Styles moved to external CSS files --></head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <!-- Fixed navigation header using classes from external CSS -->  
+  <div class="header-nav-container">
+    <nav class="header-nav">
+      <a href="../index.html" class="nav-link-default">Home</a>
+      <a href="../about.html" class="nav-link-default">About</a>
+      <a href="../services.html" class="nav-link-default">Services</a>
+      <a href="../projects.html" class="nav-link-default">Projects</a>
+      <a href="index.html" class="nav-link-current">Resources</a>
+      <a href="../contact.html" class="nav-link-default">Contact</a>
+    </nav>
+  </div>
+  <div class="main-content">
+    <img src="../public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
+    <div class="headline">Resources & Learning Center</div>
+    <div class="resources-list">
+      <div class="resource-section">
+        <h2 class="resource-title">DIY Video Library</h2>
+        <p>Step-by-step video guides for building, automating, and customizing your own AI workflows.</p>
+        <div class="blog-posts">
+          <div class="blog-post">
+            <div class="blog-title" onclick="toggleBlog(this)">
+              <h3>How to Build an AI Agent with CrewAI</h3>
+              <span class="blog-toggle">+</span>
+            </div>
+            <div class="blog-content">
+              <p><em>Content will be added soon. Click the + button to expand/collapse this section.</em></p>
+            </div>
+          </div>
+          <div class="blog-post">
+            <div class="blog-title" onclick="toggleBlog(this)">
+              <h3>Automate Lead Gen with n8n</h3>
+              <span class="blog-toggle">+</span>
+            </div>
+            <div class="blog-content">
+              <p><em>Content will be added soon. Click the + button to expand/collapse this section.</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="resource-section">
+        <h2 class="resource-title">Downloadable Automations and Ready-to-Use Templates</h2>
+        <p>Pre-built tools and templates for marketing, analytics, and more that you can implement right away.</p>
+        <div class="blog-posts">
+          <div class="blog-post">
+            <div class="blog-title" onclick="toggleBlog(this)">
+              <h3>Marketing Automation Starter</h3>
+              <span class="blog-toggle">+</span>
+            </div>
+            <div class="blog-content">
+              <p><em>Content will be added soon. Click the + button to expand/collapse this section.</em></p>
+            </div>
+          </div>
+          <div class="blog-post">
+            <div class="blog-title" onclick="toggleBlog(this)">
+              <h3>Custom Reporting Dashboard</h3>
+              <span class="blog-toggle">+</span>
+            </div>
+            <div class="blog-content">
+              <p><em>Content will be added soon. Click the + button to expand/collapse this section.</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="resource-section">
+        <h2 class="resource-title">Downloadables</h2>
+        <p>Free resources to help you get started, including checklists, guides, and sample data files.</p>
+        <div class="blog-posts">
+          <div class="blog-post">
+            <div class="blog-title" onclick="toggleBlog(this)">
+              <h3>AI Agent Planning Checklist</h3>
+              <span class="blog-toggle">+</span>
+            </div>
+            <div class="blog-content">
+              <p><em>Content will be added soon. Click the + button to expand/collapse this section.</em></p>
+            </div>
+          </div>
+          <div class="blog-post">
+            <div class="blog-title" onclick="toggleBlog(this)">
+              <h3>Sample Data Sets</h3>
+              <span class="blog-toggle">+</span>
+            </div>
+            <div class="blog-content">
+              <p><em>Content will be added soon. Click the + button to expand/collapse this section.</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="resource-section faq-section">
+        <h2 class="resource-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item"><span class="faq-q">What is an agentic AI workflow?</span><br><span class="faq-a">An agentic AI workflow uses autonomous software agents to handle tasks, make decisions, and automate processes with minimal human intervention.</span></div>
+          <div class="faq-item"><span class="faq-q">Can I use these resources if I’m not a developer?</span><br><span class="faq-a">Absolutely! Our videos and downloads are designed for all skill levels, with simple instructions and no coding required for most templates.</span></div>
+          <div class="faq-item"><span class="faq-q">How do I request a custom tutorial or workflow?</span><br><span class="faq-a">Contact us with your idea, and we’ll do our best to create a guide or resource for your needs.</span></div>
+          <div class="faq-item"><span class="faq-q">What are AI Agents?</span><br><span class="faq-a">An assistant who...<br>- Has perfect memory<br>- Always follows instructions<br>- Never sleeps<br>- Costs a fraction of hiring additional workforce</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Animated glowing dots background (canvas)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let dots = [];
+    const DOTS = 40;
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    function randomDot() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 6 + Math.random() * 10,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
+      };
+    }
+    function distance(a, b) {
+      return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+    }
+    function updateDots() {
+      for (let d of dots) {
+        d.x += d.dx;
+        d.y += d.dy;
+        if (d.x < 0 || d.x > width) d.dx *= -1;
+        if (d.y < 0 || d.y > height) d.dy *= -1;
+      }
+      // Occasionally merge dots
+      for (let i = 0; i < dots.length; ++i) {
+        for (let j = i+1; j < dots.length; ++j) {
+          let a = dots[i], b = dots[j];
+          if (distance(a, b) < (a.r + b.r) * 0.8) {
+            // Merge: average position, increase radius
+            a.x = (a.x + b.x) / 2;
+            a.y = (a.y + b.y) / 2;
+            a.r = Math.min(24, a.r + b.r * 0.18);
+            b.x = Math.random() * width;
+            b.y = Math.random() * height;
+            b.r = 6 + Math.random() * 10;
+          }
+        }
+      }
+    }
+    function drawDots() {
+      ctx.clearRect(0, 0, width, height);
+      for (let d of dots) {
+        let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
+        grad.addColorStop(0, d.color);
+        grad.addColorStop(1, 'rgba(20,184,166,0)');
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+        ctx.fillStyle = grad;
+        ctx.shadowColor = '#14b8a6';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+      }
+    }
+    function animate() {
+      updateDots();
+      drawDots();
+      requestAnimationFrame(animate);
+    }
+    // Init dots
+    dots = Array.from({length: DOTS}, randomDot);
+    animate();
+    // Function to toggle blog post content visibility
+  function toggleBlog(element) {
+    const content = element.nextElementSibling;
+    const toggle = element.querySelector('.blog-toggle');
+    
+    if (content.classList.contains('active')) {
+      content.classList.remove('active');
+      toggle.textContent = '+';
+      toggle.style.transform = 'rotate(0deg)';
+    } else {
+      content.classList.add('active');
+      toggle.textContent = '-';
+      toggle.style.transform = 'rotate(90deg)';
+    }
+  }
+</script>
+</body>
+</html>

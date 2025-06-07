@@ -1,0 +1,32 @@
+[build]
+  publish = "."
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/public/*"
+  to = "/public/:splat"
+  status = 200
+
+[context.production.environment]
+  NODE_ENV = "production"
+
+# Form handling settings
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    
+# Explicitly enable forms
+[build.processing.html]
+  pretty_urls = true
+
+# Form submissions redirect
+[[redirects]]
+  from = "/contact-success.html"
+  to = "/contact-success.html"
+  status = 200
+  force = true
