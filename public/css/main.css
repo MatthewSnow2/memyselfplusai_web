@@ -115,6 +115,24 @@ body {
   box-shadow: 0 6px 15px rgba(20,184,166,0.35);
 }
 
+/* Orange variant of CTA button */
+.cta-button-orange {
+  display: inline-block; 
+  font-size: 1.1rem; 
+  padding: 8px 16px; 
+  background-color: #e85d04; 
+  color: #fff; 
+  border-radius: 6px; 
+  text-decoration: none; 
+  box-shadow: 0 4px 12px rgba(232,93,4,0.25); 
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-button-orange:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(232,93,4,0.35);
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 600px) {
   .logo { 
