@@ -115,8 +115,14 @@
   margin-bottom: 30px;
 }
 
+.audit-cta-container {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
 .cta-container {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 40px;
   text-align: center;
 }
