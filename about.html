@@ -112,7 +112,7 @@
         r: 6 + Math.random() * 10,
         dx: (Math.random() - 0.5) * 0.6,
         dy: (Math.random() - 0.5) * 0.6,
-        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
+        color: `rgba(6,182,212,${0.15 + Math.random() * 0.55})`
       };
     }
     function distance(a, b) {
@@ -146,11 +146,11 @@
       for (let d of dots) {
         let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
         grad.addColorStop(0, d.color);
-        grad.addColorStop(1, 'rgba(20,184,166,0)');
+        grad.addColorStop(1, 'rgba(6,182,212,0)');
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
         ctx.fillStyle = grad;
-        ctx.shadowColor = '#14b8a6';
+        ctx.shadowColor = '#06b6d4';
         ctx.shadowBlur = 16;
         ctx.fill();
       }

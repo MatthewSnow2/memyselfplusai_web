@@ -3,54 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Me, Myself Plus AI is a boutique AI studio in Nashville creating custom autonomous-agent solutions for small-to-mid-size businesses." />
-  <meta name="keywords" content="AI, autonomous agents, automation, consulting, training, Nashville, small business, Me Myself Plus AI, agentic systems" />
-  <meta name="author" content="Me, Myself Plus AI" />
-  <meta property="og:title" content="Me, Myself Plus AI | Focus on What Matters Most" />
-  <meta property="og:description" content="Empowering Individuals by Making AI Integration Accessible and Simple. Boutique AI studio in Nashville." />
-  <meta property="og:image" content="public/images/FullLogo_Transparent_NoBuffer.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.yourdomain.com/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Me, Myself Plus AI" />
-  <meta name="twitter:description" content="Boutique AI studio in Nashville offering custom agentic automation." />
-  <meta name="twitter:image" content="public/images/FullLogo_Transparent_NoBuffer.png" />
-  <title>Me, Myself Plus AI | Focus on What Matters Most</title>
-  <link rel="icon" type="image/png" href="public/images/FullLogo_Transparent_NoBuffer.png" />
-  <link rel="stylesheet" href="public/css/navigation.css">
-  <link rel="stylesheet" href="public/css/main.css">
-  <link rel="stylesheet" href="public/css/index.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
-  <!-- Styles moved to external CSS files -->
+  <title>Neural Network Animation Preview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+    }
+    
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    
+    .preview-info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      max-width: 300px;
+    }
+    
+    .preview-info h3 {
+      margin: 0 0 10px 0;
+      color: #06b6d4;
+    }
+  </style>
 </head>
 <body>
   <canvas id="bg-canvas"></canvas>
   
-  <!-- Fixed navigation header using classes from external CSS -->  
-  <div class="header-nav-container">
-    <nav class="header-nav">
-      <a href="index.html" class="nav-link-current">Home</a>
-      <a href="about.html" class="nav-link-default">About</a>
-      <a href="services.html" class="nav-link-default">Services</a>
-      <a href="projects.html" class="nav-link-default">Projects</a>
-      <a href="blog/index.html" class="nav-link-default">Resources</a>
-      <a href="contact.html" class="nav-link-default">Contact</a>
-    </nav>
+  <div class="preview-info">
+    <h3>Neural Network Animation Preview</h3>
+    <p>This is a preview of the neural network background animation. The animation shows:</p>
+    <ul>
+      <li>Pulsing neural network nodes</li>
+      <li>Signal propagation between layers</li>
+      <li>Connection highlighting</li>
+      <li>Gradient background</li>
+    </ul>
+    <p><strong>Note:</strong> This is just a preview - your main website is unchanged.</p>
   </div>
-  
-  <div class="main-content">
-    <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
-    <div class="headline">Cutting-Edge AI Solutions for Visionary Leaders</div>
-    <div class="audit-cta-container">
-      <a href="https://elaborate-kangaroo-285d06.netlify.app" class="cta-button-orange" target="_blank" rel="noopener">Self-Serve AI Audit</a>
-    </div>
-    <div class="cta-container">
-      <a href="contact.html" class="cta-button">Contact Us</a>
-    </div>
-  </div>
+
   <script>
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
