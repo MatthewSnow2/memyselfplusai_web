@@ -52,77 +52,137 @@
     </div>
   </div>
   <script>
-    // Animated glowing dots background (canvas)
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
-    let dots = [];
-    const DOTS = 40;
+    let time = 0;
+    
     function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
     }
+    
     window.addEventListener('resize', resize);
     resize();
-    function randomDot() {
-      return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: 6 + Math.random() * 10,
-        dx: (Math.random() - 0.5) * 0.6,
-        dy: (Math.random() - 0.5) * 0.6,
-        color: `rgba(20,184,166,${0.15 + Math.random() * 0.55})`
-      };
+    
+    function drawBackground() {
+      // Create gradient background
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, '#0f172a'); // Dark slate
+      gradient.addColorStop(0.3, '#1e293b'); // Slate 800
+      gradient.addColorStop(0.7, '#0f766e'); // Teal 700
+      gradient.addColorStop(1, '#134e4a'); // Teal 800
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
     }
-    function distance(a, b) {
-      return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
-    }
-    function updateDots() {
-      for (let d of dots) {
-        d.x += d.dx;
-        d.y += d.dy;
-        if (d.x < 0 || d.x > width) d.dx *= -1;
-        if (d.y < 0 || d.y > height) d.dy *= -1;
+    
+    function drawWireframe() {
+      ctx.strokeStyle = 'rgba(20, 184, 166, 0.3)';
+      ctx.lineWidth = 1;
+      
+      const gridSize = 50;
+      const offsetX = (time * 0.5) % gridSize;
+      const offsetY = (time * 0.3) % gridSize;
+      
+      // Draw moving grid
+      ctx.beginPath();
+      for (let x = -gridSize + offsetX; x < width + gridSize; x += gridSize) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
       }
-      // Occasionally merge dots
-      for (let i = 0; i < dots.length; ++i) {
-        for (let j = i+1; j < dots.length; ++j) {
-          let a = dots[i], b = dots[j];
-          if (distance(a, b) < (a.r + b.r) * 0.8) {
-            // Merge: average position, increase radius
-            a.x = (a.x + b.x) / 2;
-            a.y = (a.y + b.y) / 2;
-            a.r = Math.min(24, a.r + b.r * 0.18);
-            b.x = Math.random() * width;
-            b.y = Math.random() * height;
-            b.r = 6 + Math.random() * 10;
-          }
-        }
+      for (let y = -gridSize + offsetY; y < height + gridSize; y += gridSize) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
       }
-    }
-    function drawDots() {
-      ctx.clearRect(0, 0, width, height);
-      for (let d of dots) {
-        let grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
-        grad.addColorStop(0, d.color);
-        grad.addColorStop(1, 'rgba(20,184,166,0)');
+      ctx.stroke();
+      
+      // Draw animated geometric shapes
+      ctx.strokeStyle = 'rgba(20, 184, 166, 0.6)';
+      ctx.lineWidth = 2;
+      
+      // Moving triangles
+      for (let i = 0; i < 8; i++) {
+        const angle = (time * 0.01) + (i * Math.PI / 4);
+        const x = width/2 + Math.cos(angle) * (200 + i * 50);
+        const y = height/2 + Math.sin(angle) * (150 + i * 30);
+        const size = 20 + Math.sin(time * 0.02 + i) * 10;
+        
         ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
-        ctx.fillStyle = grad;
-        ctx.shadowColor = '#14b8a6';
-        ctx.shadowBlur = 16;
+        ctx.moveTo(x, y - size);
+        ctx.lineTo(x - size * 0.866, y + size * 0.5);
+        ctx.lineTo(x + size * 0.866, y + size * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+      }
+      
+      // Moving hexagons
+      for (let i = 0; i < 5; i++) {
+        const angle = (time * -0.008) + (i * Math.PI * 2 / 5);
+        const x = width/2 + Math.cos(angle) * (300 + i * 40);
+        const y = height/2 + Math.sin(angle) * (200 + i * 25);
+        const size = 15 + Math.cos(time * 0.015 + i) * 8;
+        
+        ctx.beginPath();
+        for (let j = 0; j < 6; j++) {
+          const hexAngle = (j * Math.PI) / 3;
+          const hx = x + Math.cos(hexAngle) * size;
+          const hy = y + Math.sin(hexAngle) * size;
+          if (j === 0) ctx.moveTo(hx, hy);
+          else ctx.lineTo(hx, hy);
+        }
+        ctx.closePath();
+        ctx.stroke();
+      }
+      
+      // Connecting lines between shapes
+      ctx.strokeStyle = 'rgba(20, 184, 166, 0.2)';
+      ctx.lineWidth = 1;
+      
+      for (let i = 0; i < 6; i++) {
+        const angle1 = (time * 0.01) + (i * Math.PI / 3);
+        const angle2 = (time * -0.008) + ((i + 1) * Math.PI * 2 / 5);
+        
+        const x1 = width/2 + Math.cos(angle1) * (200 + i * 50);
+        const y1 = height/2 + Math.sin(angle1) * (150 + i * 30);
+        const x2 = width/2 + Math.cos(angle2) * (300 + i * 40);
+        const y2 = height/2 + Math.sin(angle2) * (200 + i * 25);
+        
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+    }
+    
+    function drawParticles() {
+      ctx.fillStyle = 'rgba(20, 184, 166, 0.8)';
+      
+      for (let i = 0; i < 20; i++) {
+        const angle = (time * 0.005) + (i * Math.PI * 2 / 20);
+        const radius = 100 + Math.sin(time * 0.01 + i) * 50;
+        const x = width/2 + Math.cos(angle) * radius;
+        const y = height/2 + Math.sin(angle) * radius;
+        const size = 2 + Math.sin(time * 0.02 + i) * 1;
+        
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
+    
     function animate() {
-      updateDots();
-      drawDots();
+      time += 1;
+      
+      drawBackground();
+      drawWireframe();
+      drawParticles();
+      
       requestAnimationFrame(animate);
     }
-    // Init dots
-    dots = Array.from({length: DOTS}, randomDot);
+    
     animate();
   </script>
 </body>
