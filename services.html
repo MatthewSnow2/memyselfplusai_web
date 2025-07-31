@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="public/css/navigation.css">
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="public/css/services.css">
+  <link rel="stylesheet" href="public/css/audit-modal.css">
   <!-- Styles moved to external CSS files -->
 </head>
 <body>
@@ -33,9 +34,9 @@
     <div class="headline">AI Automations and Solutions</div>
     <div class="services-grid">
       <div class="section-container">
-        <a href="https://n8n-latest-5k1i.onrender.com/webhook/self-serve-audit" class="cta-button-orange" target="_blank" rel="noopener">
+        <button onclick="openAuditModal()" class="cta-button-orange">
           Self-Serve AI Audit
-        </a>
+        </button>
       </div>
       
       <div class="section-container">
@@ -174,5 +175,6 @@
     dots = Array.from({length: DOTS}, randomDot);
     animate();
   </script>
+  <script src="public/js/audit-modal.js"></script>
 </body>
 </html>

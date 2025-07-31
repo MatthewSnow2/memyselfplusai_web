@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="public/css/navigation.css">
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="public/css/index.css">
+  <link rel="stylesheet" href="public/css/audit-modal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +46,7 @@
     <img src="public/images/FullLogo_Transparent_NoBuffer.png" alt="Me Myself Plus AI Logo" class="logo" />
     <div class="headline">Cutting-Edge AI Solutions for Visionary Leaders</div>
     <div class="audit-cta-container">
-      <a href="https://n8n-latest-5k1i.onrender.com/webhook/self-serve-audit" class="cta-button-orange" target="_blank" rel="noopener">Self-Serve AI Audit</a>
+      <button onclick="openAuditModal()" class="cta-button-orange">Self-Serve AI Audit</button>
     </div>
     <div class="cta-container">
       <a href="contact.html" class="cta-button">Contact Us</a>
@@ -269,5 +270,6 @@
     initializeNetwork();
     animate();
   </script>
+  <script src="public/js/audit-modal.js"></script>
 </body>
 </html>
