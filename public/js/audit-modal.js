@@ -3,7 +3,7 @@ class AuditModal {
   constructor() {
     this.modal = null;
     this.form = null;
-    this.webhookUrl = 'https://n8n-latest-5k1i.onrender.com/webhook/self-serve-audit';
+    this.webhookUrl = 'https://im4tlai.app.n8n.cloud/webhook/self-serve-audit';
     this.init();
   }
 
@@ -136,8 +136,8 @@ class AuditModal {
             </form>
 
             <div id="auditSuccessMessage" class="audit-success-message">
-              <h3>🎉 Audit Request Submitted Successfully!</h3>
-              <p>Thank you for your interest! We'll analyze your information and get back to you within 24 hours with personalized AI recommendations.</p>
+              <h3>🎉 Thank you for your submission!</h3>
+              <p>Thank you for your submission. One of our consultants will reach out to you shortly.</p>
             </div>
           </div>
         </div>
@@ -204,27 +204,31 @@ class AuditModal {
       // Add timestamp
       data.submittedAt = new Date().toISOString();
 
-      // Submit to n8n webhook
-      const response = await fetch(this.webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-        // Show success message
-        this.form.style.display = 'none';
-        document.getElementById('auditSuccessMessage').style.display = 'block';
-        
-        // Auto-close modal after 3 seconds
-        setTimeout(() => {
-          this.close();
-        }, 3000);
-      } else {
-        throw new Error('Failed to submit audit request');
+      // Fire-and-forget submit to n8n webhook (don't await long workflow)
+      try {
+        fetch(this.webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+          // keepalive allows the request to outlive page navigation/close
+          keepalive: true,
+        }).catch(err => console.error('Audit webhook error:', err));
+      } catch (innerErr) {
+        console.error('Audit webhook init error:', innerErr);
+        // We still proceed with UX success to avoid blocking the user
       }
+
+      // Immediately show success UX without waiting for webhook
+      this.form.style.display = 'none';
+      const successEl = document.getElementById('auditSuccessMessage');
+      if (successEl) successEl.style.display = 'block';
+
+      // Auto-close modal shortly and restore form for next open
+      setTimeout(() => {
+        this.close();
+      }, 2000);
 
     } catch (error) {
       console.error('Error submitting audit:', error);
