@@ -188,6 +188,28 @@ class AuditModal {
     this.form.style.display = 'block';
   }
 
+  // Brief toast on the main page after modal closes
+  showToast(message = 'Submission sent!') {
+    try {
+      const toast = document.createElement('div');
+      toast.className = 'audit-toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      // Start fade out
+      setTimeout(() => {
+        toast.style.animation = 'toastFadeOut 0.25s ease forwards';
+      }, 1800);
+
+      // Remove from DOM
+      setTimeout(() => {
+        toast.remove();
+      }, 2200);
+    } catch (e) {
+      console.error('Toast error:', e);
+    }
+  }
+
   async submitForm() {
     const submitBtn = this.form.querySelector('.audit-submit-btn');
     const originalText = submitBtn.textContent;
@@ -228,6 +250,7 @@ class AuditModal {
       // Auto-close modal shortly and restore form for next open
       setTimeout(() => {
         this.close();
+        this.showToast('Submission sent!');
       }, 2000);
 
     } catch (error) {
