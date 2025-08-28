@@ -1,0 +1,90 @@
+<svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .workflow-text { font-family: Arial, sans-serif; font-size: 10px; fill: white; text-anchor: middle; }
+      .workflow-node { fill: rgba(30,41,59,0.9); stroke: #06b6d4; stroke-width: 2; }
+      .workflow-line { stroke: #06b6d4; stroke-width: 2; fill: none; }
+      .workflow-icon { fill: #06b6d4; }
+      .n8n-logo { font-family: Arial, sans-serif; font-size: 14px; fill: white; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="280" height="200" fill="rgba(15,23,42,0.95)" rx="12"/>
+  
+  <!-- Gmail Trigger -->
+  <rect x="20" y="20" width="50" height="35" rx="17" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(35,30)">
+    <path d="M0 5 L10 12 L20 5 L20 15 L0 15 Z" fill="#ea4335"/>
+    <path d="M0 5 L10 12 L20 5" fill="none" stroke="white" stroke-width="1"/>
+  </g>
+  <text x="45" y="42" class="workflow-text">Gmail</text>
+  <text x="45" y="52" class="workflow-text">Trigger</text>
+  
+  <!-- Lead Qualification -->
+  <rect x="20" y="80" width="50" height="35" rx="17" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(38,90)">
+    <rect x="0" y="0" width="14" height="12" rx="2" fill="none" stroke="#06b6d4" stroke-width="1"/>
+    <circle cx="4" cy="4" r="1" fill="#06b6d4"/>
+    <circle cx="10" cy="4" r="1" fill="#06b6d4"/>
+    <path d="M4 7 L10 7" stroke="#06b6d4" stroke-width="1"/>
+  </g>
+  <text x="45" y="90" class="workflow-text">Lead</text>
+  <text x="45" y="102" class="workflow-text">Qualification</text>
+  
+  <!-- OpenAI Chat Model -->
+  <rect x="20" y="140" width="50" height="35" rx="17" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(40,150)">
+    <path d="M5 0 L9 3 L7 4 L10 6 L7 8 L9 9 L5 12 L1 9 L3 8 L0 6 L3 4 L1 3 Z" fill="#06b6d4" transform="scale(0.8)"/>
+  </g>
+  <text x="45" y="152" class="workflow-text">OpenAI</text>
+  <text x="45" y="164" class="workflow-text">Chat Model</text>
+  
+  <!-- Lead Router -->
+  <rect x="120" y="80" width="50" height="35" rx="17" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(140,90)">
+    <rect x="0" y="4" width="4" height="4" fill="#06b6d4"/>
+    <rect x="3" y="0" width="4" height="4" fill="#06b6d4"/>
+    <rect x="6" y="4" width="4" height="4" fill="#06b6d4"/>
+    <rect x="3" y="8" width="4" height="4" fill="#06b6d4"/>
+    <line x1="5" y1="4" x2="5" y2="0" stroke="#06b6d4" stroke-width="1"/>
+    <line x1="5" y1="8" x2="5" y2="12" stroke="#06b6d4" stroke-width="1"/>
+  </g>
+  <text x="145" y="92" class="workflow-text">Lead</text>
+  <text x="145" y="104" class="workflow-text">Router</text>
+  
+  <!-- Customized Response -->
+  <rect x="200" y="40" width="50" height="35" rx="17" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(220,50)">
+    <path d="M5 2 A3 3 0 0 1 8 5 A3 3 0 0 1 5 8 A3 3 0 0 1 2 5 A3 3 0 0 1 5 2" fill="none" stroke="#06b6d4" stroke-width="1"/>
+    <path d="M5 0 L5 14 M0 7 L10 7" stroke="#06b6d4" stroke-width="1"/>
+  </g>
+  <text x="225" y="52" class="workflow-text">Customized</text>
+  <text x="225" y="64" class="workflow-text">Response</text>
+  
+  <!-- Email Response -->
+  <rect x="200" y="120" width="50" height="35" rx="17" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(215,130)">
+    <path d="M0 5 L10 12 L20 5 L20 15 L0 15 Z" fill="#ea4335"/>
+    <path d="M0 5 L10 12 L20 5" fill="none" stroke="white" stroke-width="1"/>
+  </g>
+  <text x="225" y="132" class="workflow-text">Email</text>
+  <text x="225" y="144" class="workflow-text">Response</text>
+  
+  <!-- n8n logo -->
+  <text x="220" y="185" class="n8n-logo">n8n</text>
+  
+  <!-- Connections -->
+  <line x1="45" y1="55" x2="45" y2="80" class="workflow-line"/>
+  <line x1="70" y1="97" x2="120" y2="97" class="workflow-line"/>
+  <line x1="45" y1="115" x2="45" y2="140" class="workflow-line"/>
+  <line x1="170" y1="85" x2="200" y2="60" class="workflow-line"/>
+  <line x1="170" y1="110" x2="200" y2="135" class="workflow-line"/>
+  
+  <!-- Arrows -->
+  <polygon points="43,75 45,80 47,75" fill="#06b6d4"/>
+  <polygon points="115,95 120,97 115,99" fill="#06b6d4"/>
+  <polygon points="43,135 45,140 47,135" fill="#06b6d4"/>
+  <polygon points="195,65 200,60 195,55" fill="#06b6d4"/>
+  <polygon points="195,140 200,135 195,130" fill="#06b6d4"/>
+</svg>

@@ -1,0 +1,78 @@
+<svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .workflow-text { font-family: Arial, sans-serif; font-size: 10px; fill: white; text-anchor: middle; }
+      .workflow-node { fill: rgba(30,41,59,0.9); stroke: #06b6d4; stroke-width: 2; }
+      .workflow-line { stroke: #06b6d4; stroke-width: 2; fill: none; }
+      .workflow-icon { fill: #06b6d4; }
+      .n8n-logo { font-family: Arial, sans-serif; font-size: 16px; fill: white; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="280" height="200" fill="rgba(15,23,42,0.95)" rx="12"/>
+  
+  <!-- n8n logo -->
+  <text x="40" y="25" class="n8n-logo">∞ n8n</text>
+  
+  <!-- Invoice Trigger -->
+  <rect x="10" y="80" width="45" height="30" rx="15" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(20,87)">
+    <rect x="0" y="0" width="15" height="12" fill="none" stroke="white" stroke-width="1"/>
+    <path d="M2 3 L13 3 M2 6 L13 6 M2 9 L13 9" stroke="white" stroke-width="1"/>
+  </g>
+  <text x="32" y="90" class="workflow-text">Invoice</text>
+  <text x="32" y="102" class="workflow-text">Trigger</text>
+  
+  <!-- AI Proposal Builder -->
+  <rect x="70" y="80" width="45" height="30" rx="15" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(82,87)">
+    <rect x="0" y="0" width="12" height="10" rx="2" fill="none" stroke="#06b6d4" stroke-width="1"/>
+    <circle cx="4" cy="4" r="1" fill="#06b6d4"/>
+    <circle cx="8" cy="4" r="1" fill="#06b6d4"/>
+    <path d="M4 6.5 L8 6.5" stroke="#06b6d4" stroke-width="1"/>
+  </g>
+  <text x="92" y="88" class="workflow-text">AI Proposal</text>
+  <text x="92" y="100" class="workflow-text">Builder</text>
+  
+  <!-- CRM Database Lookup -->
+  <rect x="130" y="80" width="45" height="30" rx="15" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(142,87)">
+    <rect x="0" y="0" width="12" height="10" rx="1" fill="none" stroke="#06b6d4" stroke-width="1"/>
+    <rect x="0" y="2" width="12" height="2" fill="#06b6d4"/>
+    <rect x="0" y="5" width="12" height="2" fill="#06b6d4"/>
+    <rect x="0" y="8" width="12" height="2" fill="#06b6d4"/>
+  </g>
+  <text x="152" y="86" class="workflow-text">CRM</text>
+  <text x="152" y="96" class="workflow-text">Database</text>
+  <text x="152" y="104" class="workflow-text">Lookup</text>
+  
+  <!-- Proposal Formatter -->
+  <rect x="190" y="80" width="45" height="30" rx="15" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(207,87)">
+    <path d="M5 0 L9 3 L7 4 L10 6 L7 8 L9 9 L5 12 L1 9 L3 8 L0 6 L3 4 L1 3 Z" fill="#06b6d4" transform="scale(0.7)"/>
+  </g>
+  <text x="212" y="88" class="workflow-text">Proposal</text>
+  <text x="212" y="100" class="workflow-text">Formatter</text>
+  
+  <!-- Send Proposal -->
+  <rect x="245" y="80" width="45" height="30" rx="15" class="workflow-node"/>
+  <g class="workflow-icon" transform="translate(257,87)">
+    <rect x="0" y="2" width="12" height="8" fill="none" stroke="white" stroke-width="1"/>
+    <path d="M0 2 L6 6 L12 2" stroke="white" stroke-width="1" fill="none"/>
+  </g>
+  <text x="267" y="88" class="workflow-text">Send</text>
+  <text x="267" y="100" class="workflow-text">Proposal</text>
+  
+  <!-- Connections -->
+  <line x1="55" y1="95" x2="70" y2="95" class="workflow-line"/>
+  <line x1="115" y1="95" x2="130" y2="95" class="workflow-line"/>
+  <line x1="175" y1="95" x2="190" y2="95" class="workflow-line"/>
+  <line x1="235" y1="95" x2="245" y2="95" class="workflow-line"/>
+  
+  <!-- Arrows -->
+  <polygon points="65,93 70,95 65,97" fill="#06b6d4"/>
+  <polygon points="125,93 130,95 125,97" fill="#06b6d4"/>
+  <polygon points="185,93 190,95 185,97" fill="#06b6d4"/>
+  <polygon points="240,93 245,95 240,97" fill="#06b6d4"/>
+</svg>
