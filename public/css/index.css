@@ -127,6 +127,119 @@
   text-align: center;
 }
 
+/* Services Overview Section */
+.services-overview {
+  background: rgba(15,23,42,0.7);
+  border-top: 1px solid rgba(6,182,212,0.3);
+  padding: 80px 0;
+  margin-top: 60px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: #7dd3fc;
+  font-size: 1.3rem;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 6vw;
+}
+
+.service-overview-card {
+  background: rgba(30,41,59,0.90);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 2px solid rgba(6,182,212,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-overview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #06b6d4, #14b8a6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-overview-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(6,182,212,0.5);
+  box-shadow: 0 20px 40px rgba(6,182,212,0.15);
+}
+
+.service-overview-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.service-overview-title {
+  color: #06b6d4;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.service-overview-description {
+  color: #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.services-cta {
+  text-align: center;
+  margin-top: 60px;
+}
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .services-overview {
+    padding: 60px 0;
+  }
+}
+
 @media (max-width: 600px) {
   .hero-subheading {
     font-size: 1.1rem;
@@ -139,5 +252,28 @@
   }
   .features-container {
     grid-template-columns: 1fr;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 4vw;
+  }
+  
+  .service-overview-card {
+    padding: 24px 20px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+  
+  .services-overview {
+    padding: 50px 0;
   }
 }
