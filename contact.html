@@ -35,9 +35,9 @@
     </div>
     <div class="headline">Contact Us</div>
     <div class="contact-section">
-      <!-- Formspree form with n8n integration via email -->
-      <form id="contact-form" action="https://formspree.io/f/xrgdvyjv" method="POST" class="contact-form">
-          <input type="hidden" name="_subject" value="New Website Contact Form Submission">
+      <!-- Netlify Forms -->
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" class="contact-form">
+          <input type="hidden" name="form-name" value="contact">
           <input type="hidden" name="form_source" value="memyselfplusai.com">
           <input type="hidden" name="submission_timestamp" id="timestamp-field">
           <div class="form-field">
@@ -139,7 +139,7 @@
     dots = Array.from({length: DOTS}, randomDot);
     animate();
 
-    // Set timestamp and handle form submission
+    // Set timestamp and handle form submission (Netlify Forms)
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       document.getElementById('timestamp-field').value = new Date().toISOString();
@@ -148,10 +148,10 @@
       const errorDiv = document.getElementById('form-error');
       errorDiv.classList.add('hidden');
       try {
-        const response = await fetch(form.action, {
+        const response = await fetch('/', {
           method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString()
         });
         if (response.ok) {
           form.classList.add('hidden');
