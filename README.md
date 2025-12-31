@@ -21,7 +21,7 @@ npm run build    # For production (PostCSS pipeline)
 
 - All static assets are in `/public/images/`
 - Main logo: `FullLogo_Transparent_NoBuffer.png`
-- Pages: Home, Services, Projects, About, Blog, Contact
+- Pages: Home, Services, Projects, About, Contact
 
 ---
 
