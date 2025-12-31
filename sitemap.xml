@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.yourdomain.com/</loc>
+    <loc>https://www.memyselfplusai.com/</loc>
   </url>
   <url>
-    <loc>https://www.yourdomain.com/services.html</loc>
+    <loc>https://www.memyselfplusai.com/services.html</loc>
   </url>
   <url>
-    <loc>https://www.yourdomain.com/projects.html</loc>
+    <loc>https://www.memyselfplusai.com/projects.html</loc>
   </url>
   <url>
-    <loc>https://www.yourdomain.com/about.html</loc>
+    <loc>https://www.memyselfplusai.com/about.html</loc>
   </url>
   <url>
-    <loc>https://www.yourdomain.com/contact.html</loc>
-  </url>
-  <url>
-    <loc>https://www.yourdomain.com/blog/index.html</loc>
+    <loc>https://www.memyselfplusai.com/contact.html</loc>
   </url>
 </urlset>
